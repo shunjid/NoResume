@@ -39,3 +39,4 @@
 /home/shunjid/Documents/API-Hackathon/NoResume/obj/Debug/netcoreapp2.2/NoResume.dll
 /home/shunjid/Documents/API-Hackathon/NoResume/obj/Debug/netcoreapp2.2/NoResume.pdb
 /home/shunjid/Documents/API-Hackathon/NoResume/obj/Debug/netcoreapp2.2/NoResume.csproj.CopyComplete
+/home/shunjid/Documents/API-Hackathon/NoResume/obj/Debug/netcoreapp2.2/Razor/Views/Dev/Index.g.cshtml.cs
