@@ -20,6 +20,7 @@ $(document).ready(function(){
             requestToUva = $.get(uva_api_url + 'uname2uid/' + uvaHandle, function (uvaData, uvaStatus) {
                if(uvaData !== 0){
                    requestToGitHub = $.get(gitHubApiURL + githubUsername, function (userInformation, userStatus) {
+                       console.log(userInformation);
                        $.post('', $('#formWorkingProfile').serialize(), function (response) {
                            if(response != null || response !== "" || response !== "null"){
                                M.toast({

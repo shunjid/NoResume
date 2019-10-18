@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.Rider2019.2/system/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_.19.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Controllers" t="Include">
+        <e p="AccountController.cs" t="Include" />
+        <e p="DevController.cs" t="Include" />
+        <e p="HomeController.cs" t="Include" />
+        <e p="ShortBiosController.cs" t="Include" />
+        <e p="SocialProfilesController.cs" t="Include" />
+        <e p="WorkingProfilesController.cs" t="Include" />
+      </e>
+      <e p="Dockerfile" t="Include" />
+      <e p="Making.md" t="Include" />
+      <e p="Migrations" t="Include">
+        <e p="20190730181910_InitialAuth.Designer.cs" t="Include" />
+        <e p="20190730181910_InitialAuth.cs" t="Include" />
+        <e p="20190731075751_AuditImplemented.Designer.cs" t="Include" />
+        <e p="20190731075751_AuditImplemented.cs" t="Include" />
+        <e p="20190731085131_ImplementedOtherThreeModels.Designer.cs" t="Include" />
+        <e p="20190731085131_ImplementedOtherThreeModels.cs" t="Include" />
+        <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
+      </e>
+      <e p="Models" t="Include">
+        <e p="ApplicationDbContext.cs" t="Include" />
+        <e p="AuditLogging.cs" t="Include" />
+        <e p="AuthenticateDevelopers.cs" t="Include" />
+        <e p="Dev.cs" t="Include" />
+        <e p="ErrorViewModel.cs" t="Include" />
+        <e p="InitDevelopers.cs" t="Include" />
+        <e p="ShortBio.cs" t="Include" />
+        <e p="SocialProfile.cs" t="Include" />
+        <e p="WorkingProfile.cs" t="Include" />
+      </e>
+      <e p="NoResume.csproj" t="IncludeRecursive" />
+      <e p="NoResume.db" t="Include" />
+      <e p="Program.cs" t="Include" />
+      <e p="Properties" t="Include">
+        <e p="launchSettings.json" t="Include" />
+      </e>
+      <e p="README.md" t="Include" />
+      <e p="Startup.cs" t="Include" />
+      <e p="Views" t="Include">
+        <e p="Account" t="Include">
+          <e p="Login.cshtml" t="Include" />
+          <e p="Register.cshtml" t="Include" />
+        </e>
+        <e p="Dev" t="Include">
+          <e p="Index.cshtml" t="Include" />
+        </e>
+        <e p="Home" t="Include">
+          <e p="Index.cshtml" t="Include" />
+          <e p="Privacy.cshtml" t="Include" />
+        </e>
+        <e p="Shared" t="Include">
+          <e p="Error.cshtml" t="Include" />
+          <e p="_BioAjaxiFy.cshtml" t="Include" />
+          <e p="_DevPremium.cshtml" t="Include" />
+          <e p="_Editor.cshtml" t="Include" />
+          <e p="_Layout.cshtml" t="Include" />
+          <e p="_LayoutPrivate.cshtml" t="Include" />
+          <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+          <e p="_WProfileQueriFy.cshtml" t="Include" />
+          <e p="_initHome.cshtml" t="Include" />
+        </e>
+        <e p="ShortBios" t="Include">
+          <e p="Edit.cshtml" t="Include" />
+        </e>
+        <e p="SocialProfiles" t="Include">
+          <e p="Edit.cshtml" t="Include" />
+        </e>
+        <e p="WorkingProfiles" t="Include">
+          <e p="Edit.cshtml" t="Include" />
+        </e>
+        <e p="_ViewImports.cshtml" t="Include" />
+        <e p="_ViewStart.cshtml" t="Include" />
+      </e>
+      <e p="_config.yml" t="Include" />
+      <e p="app.config" t="Include" />
+      <e p="appsettings.Development.json" t="Include" />
+      <e p="appsettings.json" t="Include" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp2.2" t="Include">
+            <e p="NoResume.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="wwwroot" t="Include">
+        <e p="Screens.png" t="Include" />
+        <e p="api" t="Include">
+          <e p="app.js" t="Include" />
+          <e p="app.min.js" t="Include" />
+          <e p="profileValidator.js" t="Include" />
+          <e p="profileValidator.min.js" t="Include" />
+          <e p="shortBiosValidator.js" t="Include" />
+          <e p="shortBiosValidator.min.js" t="Include" />
+        </e>
+        <e p="chartjs" t="Include">
+          <e p="chart.min.css" t="Include" />
+          <e p="chart.min.js" t="Include" />
+          <e p="gstatic.min.js" t="Include" />
+        </e>
+        <e p="css" t="Include">
+          <e p="custom.css" t="Include" />
+          <e p="custom.min.css" t="Include" />
+          <e p="site.css" t="Include" />
+        </e>
+        <e p="editor" t="Include">
+          <e p="editor.css" t="Include" />
+          <e p="editor.min.js" t="Include" />
+        </e>
+        <e p="favicon.ico" t="Include" />
+        <e p="fonts" t="Include">
+          <e p="MaterialIcons-Regular.ttf" t="Include" />
+        </e>
+        <e p="js" t="Include">
+          <e p="_privateLayout.js" t="Include" />
+          <e p="audit.js" t="Include" />
+          <e p="site.js" t="Include" />
+        </e>
+        <e p="lib" t="Include">
+          <e p="jquery" t="Include">
+            <e p="LICENSE.txt" t="Include" />
+            <e p="dist" t="Include">
+              <e p="jquery.js" t="Include" />
+              <e p="jquery.min.js" t="Include" />
+              <e p="jquery.min.map" t="Include" />
+            </e>
+          </e>
+          <e p="jquery-validation" t="Include">
+            <e p="LICENSE.md" t="Include" />
+            <e p="dist" t="Include">
+              <e p="additional-methods.js" t="Include" />
+              <e p="additional-methods.min.js" t="Include" />
+              <e p="jquery.validate.js" t="Include" />
+              <e p="jquery.validate.min.js" t="Include" />
+            </e>
+          </e>
+          <e p="jquery-validation-unobtrusive" t="Include">
+            <e p="LICENSE.txt" t="Include" />
+            <e p="jquery.validate.unobtrusive.js" t="Include" />
+            <e p="jquery.validate.unobtrusive.min.js" t="Include" />
+          </e>
+          <e p="materialize" t="Include">
+            <e p="css" t="Include">
+              <e p="materialize.css" t="Include" />
+              <e p="materialize.min.css" t="Include" />
+            </e>
+            <e p="js" t="Include">
+              <e p="materialize.js" t="Include" />
+              <e p="materialize.min.js" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+    </e>
+  </component>
+</project>

@@ -1,0 +1,13 @@
+@using Newtonsoft.Json
+@model NoResume.Models.Dev
+
+@{
+    Layout = Layout;
+}
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_DevPremium");
+    }
+}
