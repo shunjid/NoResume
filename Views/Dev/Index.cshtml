@@ -5,18 +5,9 @@
     Layout = Layout;
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      @{
-          string requestJson = JsonConvert.SerializeObject(Model);
-      }
-      <p>@requestJson</p>
-</div>
-</body>
-</html>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_DevPremium");
+    }
+}

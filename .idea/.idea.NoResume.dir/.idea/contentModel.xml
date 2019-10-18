@@ -59,6 +59,7 @@
         <e p="Shared" t="Include">
           <e p="Error.cshtml" t="Include" />
           <e p="_BioAjaxiFy.cshtml" t="Include" />
+          <e p="_DevPremium.cshtml" t="Include" />
           <e p="_Editor.cshtml" t="Include" />
           <e p="_Layout.cshtml" t="Include" />
           <e p="_LayoutPrivate.cshtml" t="Include" />
