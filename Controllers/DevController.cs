@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -19,15 +20,22 @@ namespace NoResume.Controllers
         [HttpGet("Dev/{username}")]
         public async Task<IActionResult> Index(string username)
         {
-            var developerId = _userManager.FindByNameAsync(username).Result.Id;
-            
-            var dev = new Dev
+            try
             {
-                ShortBio = await _context.ShortBios.FindAsync(developerId),
-                WorkingProfile = await _context.WorkingProfiles.FindAsync(developerId)
-            };
+                var developerId = _userManager.FindByNameAsync(username).Result.Id;  
+                
+                var dev = new Dev
+                {
+                    ShortBio = await _context.ShortBios.FindAsync(developerId),
+                    WorkingProfile = await _context.WorkingProfiles.FindAsync(developerId)
+                };
             
-            return View(dev);
+                return View(dev);
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
         }
     }
 }

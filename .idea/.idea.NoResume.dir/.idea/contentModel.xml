@@ -121,6 +121,7 @@
         </e>
         <e p="js" t="Include">
           <e p="_privateLayout.js" t="Include" />
+          <e p="audit.js" t="Include" />
           <e p="site.js" t="Include" />
         </e>
         <e p="lib" t="Include">
