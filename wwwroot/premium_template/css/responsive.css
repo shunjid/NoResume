@@ -1,0 +1,276 @@
+/* Smartphones (landscape) */
+@media only screen and (min-width: 321px) and (max-device-width: 568px) {
+    .container {
+      width: 100% !important;
+    }
+    /* Sidebar Style*/
+    .sidebar .sidebar-item .info {
+      margin-top: 20px;
+    }
+    .sidebar .sidebar-item .icon {
+      margin-top: 20px;
+    }
+    .sidebar .skill-line span {
+      text-align: left;
+      display: block;
+    }
+    .sidebar .skill-line h3 {
+      margin-bottom: 50px;
+    }
+    /* Section Style*/
+    .section {
+      padding: 0px !important;
+      text-align: center;
+      margin-top: 30px;
+      padding: 0px 22px;
+    }
+    .section h4 {
+      margin-bottom: 10px;
+    }
+    .section .custom-content-wrapper p {
+      padding: 15px;
+    }
+    .section .section-wrapper h2 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .interests {
+      margin-bottom: 10px;
+    }
+    .interests ul li {
+      padding: 10px 15px;
+      margin-right: initial;
+    }
+  }
+  /* Smartphones (portrait) */
+  @media only screen and (max-width: 320px) {
+    .container {
+      width: 100% !important;
+    }
+    /* Sidebar Style*/
+    .sidebar .nav-icon {
+      top: 0;
+    }
+    .sidebar .button-collapse {
+      margin-left: 0px;
+    }
+    .sidebar-item .info {
+      margin-top: 20px;
+    }
+    .skill-line span {
+      text-align: left;
+      display: block;
+    }
+    .skill-line h3 {
+      margin-bottom: 50px;
+    }
+    /* Sidebar Style*/
+    .section {
+      padding: 0px !important;
+      margin-top: 30px;
+      padding: 0px 22px;
+    }
+    .section h4 {
+      line-height: 24px;
+      margin-bottom: 10px;
+    }
+    .section .custom-content-wrapper p {
+      padding: 15px;
+    }
+    .interests {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    .interests ul li .fa {
+      text-align: center;
+    }
+  }
+  /* iPads (landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    /* Sidebar Style*/
+    .sidebar .icon {
+      margin-bottom: 15px;
+    }
+    .sidebar .nav-icon {
+      top: 0px;
+    }
+    /* Sidebar Style*/
+    .section {
+      text-align: left;
+      padding-right: 0px !important;
+      padding-left: 24px !important;
+    }
+    .section .education-details p {
+      margin-top: 5px;
+      padding-top: 0px;
+    }
+  }
+  /* iPads (portrait) */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    body {
+      text-align: center;
+    }
+    .container {
+      width: 100% !important;
+    }
+    .sidebar .nav-icon {
+      top: 130px;
+    }
+    .sidebar .sidebar-item {
+      overflow: hidden;
+    }
+    .sidebar .icon {
+      margin: 30px 0;
+    }
+    .sidebar .button-collapse {
+      margin-left: 6px;
+    }
+    .sidebar .skill-line span {
+      text-align: left;
+      display: block;
+    }
+    .sidebar .skill-line h3 {
+      margin-bottom: 20px;
+    }
+    .section {
+      padding: 0px !important;
+      margin-top: 30px;
+      padding: 0px 22px;
+      text-align: center;
+    }
+    .section .custom-content-wrapper p {
+      margin-top: 5px;
+      padding: 0px 20px;
+    }
+    .interests {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+  }
+  /* tab portrait and down   */
+  @media only screen and (max-width: 992px) {
+    .container {
+      width: 100% !important;
+      margin-top: 0px !important;
+    }
+    .row {
+      margin-left: -1.5rem !important;
+      margin-right: -1.5rem !important;
+      overflow-x: hidden !important;
+    }
+    /* Nav  Style*/
+    .button-collapse i {
+      margin-left: 20px;
+    }
+    /* Sidebar Style*/
+    .sidebar {
+      text-align: center;
+    }
+    .sidebar .sidebar-item {
+      padding: 0px 30px;
+    }
+    .sidebar .section-item-details {
+      padding: 0 20px;
+    }
+    .sidebar .icon {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .sidebar .info {
+      padding-left: 15px;
+    }
+    .sidebar .skill-line {
+      margin-right: 0px !important;
+      padding: 20px;
+    }
+    .sidebar .skill-line span {
+      text-align: left;
+      display: block;
+    }
+    /* Section Style*/
+    .section {
+      text-align: center;
+      margin-top: 30px;
+      padding: 0px !important;
+    }
+    .section .section-details {
+      margin-right: 0px;
+    }
+    .section .section-details h2 {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .section .custom-content-wrapper {
+      padding: initial;
+    }
+    .section .custom-content-wrapper p {
+      margin-top: 10px;
+      padding: 0 20px;
+    }
+    .section .custom-content {
+      padding: 0 10px !important;
+    }
+    .section .custom-content,
+    .section .blog-post {
+      margin: 0px 30px;
+    }
+    /* Cover latter section Style*/
+    .cover-latter {
+      text-align: left;
+      margin-right: 0px;
+    }
+    /* Refarence section Style*/
+    .refarances {
+      padding: 20px 10px 10px;
+    }
+    /* Interest section Style*/
+    .interests ul li .fa {
+      text-align: center;
+    }
+    /* Blog section Style*/
+    .post-details p {
+      padding: 0 30px;
+    }
+    /* Contact section Style*/
+    #contact {
+      padding: 0px 40px;
+    }
+    #form-submit {
+      width: 100%;
+    }
+    /* Full post comment Style*/
+    .comment {
+      padding: 0 40px !important;
+    }
+    .comment-form {
+      padding: 0 50px !important;
+    }
+    .comment-form .input-field:last-child {
+      padding-left: 0;
+    }
+    .comment-form .btn {
+      width: 100%;
+    }
+    .comment-img img {
+      width: 100px;
+    }
+    .comment-details {
+      padding: 20px;
+    }
+    .project-description {
+      padding: 0 20px;
+    }
+  }
+  /* iphone 6 (portrait and landscape)  */
+  @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+    body {
+      text-align: center;
+    }
+    .sidebar .sidebar-item {
+      margin-top: 0px;
+    }
+    .skill-line span {
+      text-align: left;
+      display: block;
+    }
+  }

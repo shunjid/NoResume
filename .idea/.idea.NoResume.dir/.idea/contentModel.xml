@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
-    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2019.2/system/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_.19.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
@@ -157,6 +155,33 @@
               <e p="materialize.js" t="Include" />
               <e p="materialize.min.js" t="Include" />
             </e>
+          </e>
+        </e>
+        <e p="premium_template" t="Include">
+          <e p="css" t="Include">
+            <e p="colors" t="Include">
+              <e p="green.css" t="Include" />
+              <e p="lime.css" t="Include" />
+              <e p="orange.css" t="Include" />
+              <e p="purple.css" t="Include" />
+              <e p="red.css" t="Include" />
+            </e>
+            <e p="demo.css" t="Include" />
+            <e p="materialize.min.css" t="Include" />
+            <e p="responsive.css" t="Include" />
+            <e p="style.css" t="Include" />
+          </e>
+          <e p="img" t="Include">
+            <e p="profile.jpg" t="Include" />
+            <e p="profile.png" t="Include" />
+          </e>
+          <e p="js" t="Include">
+            <e p="init.js" t="Include" />
+            <e p="jquery.min.js" t="Include" />
+            <e p="masonary.js" t="Include" />
+            <e p="materialize.min.js" t="Include" />
+            <e p="styleswitcher.js" t="Include" />
+            <e p="wow.min.js" t="Include" />
           </e>
         </e>
       </e>

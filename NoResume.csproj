@@ -27,6 +27,9 @@
 
     <ItemGroup>
       <Folder Include="wwwroot\lib\materialize" />
+      <Folder Include="wwwroot\premium_template\css" />
+      <Folder Include="wwwroot\premium_template\img" />
+      <Folder Include="wwwroot\premium_template\js" />
     </ItemGroup>
 
 

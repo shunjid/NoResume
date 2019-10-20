@@ -1,0 +1,113 @@
+
+body {
+    background-color: #eae8e7;
+    color: #767270;
+  }
+  /* style for
+  
+  ***** Sidebar  *****
+  
+  */
+  .sidebar {
+    color: #ffffff;
+    background-color: #673ab7;
+  }
+  
+  .sidebar .heading nav .button-collapse i {
+    background-color: #673ab7;
+  }
+  .sidebar .heading nav .side-nav h3 {
+    color: #673ab7;
+  }
+  .sidebar .heading nav .side-nav li a:hover {
+    color: #673ab7;
+  }
+  .sidebar .info {
+    border-bottom: 1px solid #512da8;
+  }
+  .sidebar .skill-line .progress {
+    background-color: #512da8;
+  }
+  .sidebar .skill-line .determinate {
+    background-color: #ffffff;
+  }
+  /* 
+  ***** Work Experience  *****
+  */
+  
+  .custom-content-wrapper {
+    border-bottom: 1px solid #bdbdbd;
+  }
+  .custom-content-wrapper span {
+    color: #673ab7;
+  }
+  
+  /* style for
+  
+  *****  Interests  *****
+  
+  */
+  
+  .interests ul li .fa {
+    color: #673ab7;
+  }
+  /* 
+  ***** Portfolio website  *****
+  */
+  .website span a {
+    color: #673ab7;
+  }
+  
+  input[type=text]:focus:not([readonly]),
+  input[type=password]:focus:not([readonly]),
+  input[type=email]:focus:not([readonly]),
+  input[type=url]:focus:not([readonly]),
+  input[type=time]:focus:not([readonly]),
+  input[type=date]:focus:not([readonly]),
+  input[type=datetime-local]:focus:not([readonly]),
+  input[type=tel]:focus:not([readonly]),
+  input[type=number]:focus:not([readonly]),
+  input[type=search]:focus:not([readonly]),
+  textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #673ab7;
+  }
+  input[type=text]:focus:not([readonly]) + label,
+  input[type=password]:focus:not([readonly]) + label,
+  input[type=email]:focus:not([readonly]) + label,
+  input[type=url]:focus:not([readonly]) + label,
+  input[type=time]:focus:not([readonly]) + label,
+  input[type=date]:focus:not([readonly]) + label,
+  input[type=datetime-local]:focus:not([readonly]) + label,
+  input[type=tel]:focus:not([readonly]) + label,
+  input[type=number]:focus:not([readonly]) + label,
+  input[type=search]:focus:not([readonly]) + label,
+  textarea.materialize-textarea:focus:not([readonly]) + label {
+    color: #673ab7;
+  }
+  .waves-me:focus {
+    background-color: #673ab7;
+    color: #fff;
+  }
+  .btn {
+  
+    background-color: #673ab7;
+  }
+  .btn:hover,
+  .btn:focus {
+    background-color: #673ab7;
+  }
+  .btn.disabled {
+      background-color: #673ab7;
+      color: #fff;
+      cursor: default;
+  }
+  .btn.disabled:focus {
+      background-color: #673ab7;
+      color: #fff;
+      cursor: default;
+  }
+  .btn.disabled:hover {
+      background-color: #673ab7;
+      color: #fff;
+      cursor: default;
+  }

@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/home/shunjid/Documents/API-Hackathon/NoResume/NoResume.csproj",
+    "projectUniqueName": "/home/zubu/Documents/noresume/NoResume.csproj",
     "projectName": "NoResume",
-    "projectPath": "/home/shunjid/Documents/API-Hackathon/NoResume/NoResume.csproj",
-    "outputPath": "/home/shunjid/Documents/API-Hackathon/NoResume/obj/",
+    "projectPath": "/home/zubu/Documents/noresume/NoResume.csproj",
+    "outputPath": "/home/zubu/Documents/noresume/obj/",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "/usr/share/dotnet/sdk/NuGetFallbackFolder"
