@@ -84,3 +84,5 @@
 /home/zubu/Documents/noresume/obj/Debug/netcoreapp2.2/NoResume.dll
 /home/zubu/Documents/noresume/obj/Debug/netcoreapp2.2/NoResume.pdb
 /home/zubu/Documents/noresume/obj/Debug/netcoreapp2.2/NoResume.csproj.CopyComplete
+/home/zubu/Documents/noresume/obj/Debug/netcoreapp2.2/Razor/Views/PremiumLayout/premiumCV.g.cshtml.cs
+/home/zubu/Documents/noresume/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_PremiumLayout.g.cshtml.cs

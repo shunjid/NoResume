@@ -41,4 +41,9 @@
       <_ContentIncludedByDefault Remove="Views\Audits\Index.cshtml" />
     </ItemGroup>
 
+
+    <ItemGroup>
+      <Compile Remove="Views\Shared\_PremiumLayout.cshtml.cs" />
+    </ItemGroup>
+
 </Project>
