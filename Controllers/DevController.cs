@@ -18,7 +18,7 @@ namespace NoResume.Controllers
         }
 
         [HttpGet("Dev/{username}")]
-        public async Task<IActionResult> Index(string username)
+        public IActionResult Index(string username)
         {
             try
             {
@@ -26,8 +26,8 @@ namespace NoResume.Controllers
                 
                 var dev = new Dev
                 {
-                    ShortBio = await _context.ShortBios.FindAsync(developerId),
-                    WorkingProfile = await _context.WorkingProfiles.FindAsync(developerId)
+                    ShortBio = _context.ShortBios.Find(developerId),
+                    WorkingProfile = _context.WorkingProfiles.Find(developerId)
                 };
             
                 return View(dev);

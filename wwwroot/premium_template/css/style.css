@@ -270,7 +270,7 @@ Primary use:	CV/Resume, Portfolio, Perosnal Website
     overflow: hidden;
   }
   .section {
-    padding-left: 10px !important;
+    padding-left: 12px !important;
     text-align: left;
   }
   .section .fa {
@@ -281,15 +281,15 @@ Primary use:	CV/Resume, Portfolio, Perosnal Website
   .section .section-wrapper {
     background-color: #ffffff;
     overflow: hidden;
-    margin-bottom: 24px;
-    padding-bottom: 24px !important;
+    margin-bottom: 10px;
+    padding-bottom: 10px !important;
   }
   .section .section-wrapper .section-icon {
     margin-top: 40px;
   }
   .section .section-wrapper h2 {
     margin-top: 30px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
   }
   /* style for
   

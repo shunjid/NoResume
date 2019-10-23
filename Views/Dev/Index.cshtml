@@ -26,7 +26,7 @@ SIDEBAR
             ==========================-->
             <div class="feature-img">
                 <a href="#">
-                    <img src="premium_template/img/profile.jpg" class="responsive-img" alt="">
+                    <img src="~/premium_template/img/profile.jpg" class="responsive-img" alt="">
                 </a>
             </div>
 
@@ -407,14 +407,10 @@ portfolio Website
     </div>
 </div>
 </section>
-
-<!-- end row -->
-<!-- end section -->
-</div> <!-- end row -->
-
+</div>
 
 @section Scripts {
     @{
-        await Html.RenderPartialAsync("_initHome");
+        await Html.RenderPartialAsync("_DevPremium");
     }
 }
