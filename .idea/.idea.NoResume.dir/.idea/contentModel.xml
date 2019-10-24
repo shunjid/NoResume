@@ -76,6 +76,7 @@
           <e p="_initHome.cshtml" t="Include" />
           <e p="_Layout.cshtml" t="Include" />
           <e p="_LayoutPrivate.cshtml" t="Include" />
+          <e p="_PremiumLayout.cshtml" t="Include" />
           <e p="_ValidationScriptsPartial.cshtml" t="Include" />
           <e p="_WProfileQueriFy.cshtml" t="Include" />
           <e p="Error.cshtml" t="Include" />
