@@ -351,98 +351,183 @@ Work experiences
             </div>
         </div>
 
+    <!--  Github html ends   -->
 
-        <!--  Codeforces html   -->
+    <!--  Codeforces html initiates   -->
 
-<div id="CForcesResume">
-    <h4 class="orange-text text-lighten-2"><b>Codeforces Profile Summary</b></h4>
-    <div id="chartjs-pie-chart" class="card grey darken-4 white-text">
-        <div class="card-content">
-            <div class="row">
-                <div class="col s12">
+        <div id="CForcesResume">
+            <h4 class="orange-text text-lighten-2"><b>Codeforces Profile Summary</b></h4>
+            <div id="chartjs-pie-chart" class="card grey darken-4 white-text">
+                <div class="card-content">
                     <div class="row">
-                        <div class="col s12 m6 l6">
-                            <p class="header center white-text"><b>Ratings of problem solved</b></p>
-                            <div class="sample-chart-wrapper">
-                                <canvas id="problem_rating_codeForces_bar" height="250"></canvas>
-                            </div>
-                        </div>
-                        <div class="col s12 m6 l6">
-                            <p class="header center white-text"><b>Level of problems solved</b></p>
-                            <div class="sample-chart-wrapper">
-                                <canvas id="levels_codeForces_bar" height="250"></canvas>
+                        <div class="col s12">
+                            <div class="row">
+                                <div class="col s12 m6 l6">
+                                    <p class="header center white-text"><b>Ratings of problem solved</b></p>
+                                    <div class="sample-chart-wrapper">
+                                        <canvas id="problem_rating_codeForces_bar" height="250"></canvas>
+                                    </div>
+                                </div>
+                                <div class="col s12 m6 l6">
+                                    <p class="header center white-text"><b>Level of problems solved</b></p>
+                                    <div class="sample-chart-wrapper">
+                                        <canvas id="levels_codeForces_bar" height="250"></canvas>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="card grey darken-4 white-text">
-        <div class="card-content">
+            <div class="card grey darken-4 white-text">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="row">
+                                <div class="col s12 m4 l4">
+                                    <h6 class="header center white-text"><b>Verdicts of problems tried</b></h6>
+                                    <div class="sample-chart-wrapper">
+                                        <canvas id="verdicts_codeForces_pie" height="250"></canvas>
+                                    </div>
+                                </div>
+                                <div class="col s12 m4 l4">
+                                    <h6 class="header center white-text"><b>Tags of problems tried</b></h6>
+                                    <div class="sample-chart-wrapper">
+                                        <canvas id="tags_codeForces_doughnut" height="250"></canvas>
+                                    </div>
+                                </div>
+                                <div class="col s12 m4 l4">
+                                    <h6 class="header center white-text"><b>Languages used</b></h6>
+                                    <div class="sample-chart-wrapper">
+                                        <canvas id="languages_codeForces_pie" height="250"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <h6 class="white-text"><b class="orange-text text-lighten-2">Figures: </b> Hover/touch over pie/doughnut charts</h6> </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col s12">
-                    <div class="row">
-                        <div class="col s12 m4 l4">
-                            <h6 class="header center white-text"><b>Verdicts of problems tried</b></h6>
-                            <div class="sample-chart-wrapper">
-                                <canvas id="verdicts_codeForces_pie" height="250"></canvas>
-                            </div>
-                        </div>
-                        <div class="col s12 m4 l4">
-                            <h6 class="header center white-text"><b>Tags of problems tried</b></h6>
-                            <div class="sample-chart-wrapper">
-                                <canvas id="tags_codeForces_doughnut" height="250"></canvas>
-                            </div>
-                        </div>
-                        <div class="col s12 m4 l4">
-                            <h6 class="header center white-text"><b>Languages used</b></h6>
-                            <div class="sample-chart-wrapper">
-                                <canvas id="languages_codeForces_pie" height="250"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <br/>
-                    <br/>
-                    <h6 class="white-text"><b class="orange-text text-lighten-2">Figures: </b> Hover/touch over pie/doughnut charts</h6> </div>
+                    <table class="centered responsive-table grey darken-3 white-text">
+                        <thead>
+                        <tr class="gradient-45deg-blue-blue darken-4 white-text">
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                        </thead>
+                        <tbody class="blue-grey darken-4">
+                        <tr>
+                            <td>Problems Tried</td>
+                            <td id="DevTriedProblems"></td>
+                        </tr>
+                        <tr>
+                            <td>Solved</td>
+                            <td id="DevSolvedProblems"></td>
+                        </tr>
+                        <tr>
+                            <td>Maximum Attempt</td>
+                            <td id="DevMaxAttemptedProblems"></td>
+                        </tr>
+                        <tr>
+                            <td>Max Solved</td>
+                            <td id="DevMaxAcceptedProblems"></td>
+                        </tr>
+                        <tr>
+                            <td>Accepted at 1st try</td>
+                            <td id="DevAcceptedAtFirstTry"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col s12">
-            <table class="centered responsive-table grey darken-3 white-text">
-                <thead>
-                    <tr class="gradient-45deg-blue-blue darken-4 white-text">
-                        <th>Parameter</th>
-                        <th>Value</th>
+        
+    <!-- Codeforces html ends  -->
+        
+    <!--  UVA html   -->
+        
+    <div id="UHuntResume" class="row">
+        <h3 class="white-text">UVA Profile Summary</h3>
+        <hr/>
+        <div class="row" id="gradient-Analytics">
+            <div class="col s12 m6 l4 card-width">
+                <div class="card gradient-45deg-blue-indigo white-text padding-4 mt-5">
+                    <div class="col s7 m7"> <i class="material-icons background-round mt-5 mb-5">send</i>
+                        <p>Total Submissions</p>
+                    </div>
+                    <div class="col s5 m5 right-align">
+                        <h5 class="mb-0 white-text">01</h5>
+                        <br/>
+                        <h5 class="count white-text" id="_uvaTotalSubmissions"></h5> </div>
+                </div>
+            </div>
+            <div class="col s12 m6 l4 card-width">
+                <div class="card teal darken-1 white-text padding-4 mt-5">
+                    <div class="col s7 m7"> <i class="material-icons background-round mt-5 mb-5">sentiment_very_satisfied</i>
+                        <p>Total Accepted</p>
+                    </div>
+                    <div class="col s5 m5 right-align">
+                        <h5 class="mb-0 white-text">02</h5>
+                        <br/>
+                        <h5 class="count white-text" id="_uvaAcceptedSubmissionNumber"></h5> </div>
+                </div>
+            </div>
+            <div class="col s12 m6 l4 card-width">
+                <div class="card red lighten-1 white-text padding-4 mt-5">
+                    <div class="col s7 m7"> <i class="material-icons background-round mt-5 mb-5">sentiment_very_dissatisfied</i>
+                        <p>Wrong Answers</p>
+                    </div>
+                    <div class="col s5 m5 right-align">
+                        <h5 class="mb-0 white-text">03</h5>
+                        <br/>
+                        <h5 class="count white-text" id="_uvaTotalWrongSubmissions"></h5> </div>
+                </div>
+            </div>
+        </div>
+        <div id="customLoaderRegression">
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+        </div>
+        <div id="_regressionAnalytics" class="row">
+            <p class="center-align">Regression DataSet</p>
+            <div class="col s12 l12 m12 container">
+                <table id="_regressionSetTable" class="responsive-table grey darken-3">
+                    <thead>
+                    <tr class="purple darken-2 white-text">
+                        <th>Name</th>
+                        <th>Ranking (Y)</th>
+                        <th>SE (X<sub>1</sub>)</th>
+                        <th>CBJ (X<sub>2</sub>)</th>
+                        <th>Queue (X<sub>3</sub>)</th>
+                        <th>CE (X<sub>4</sub>)</th>
+                        <th>Restricted (X<sub>5</sub>)</th>
+                        <th>RE (X<sub>6</sub>)</th>
+                        <th>OL (X<sub>7</sub>)</th>
+                        <th>TL (X<sub>8</sub>)</th>
+                        <th>ML (X<sub>9</sub>)</th>
+                        <th>Wrong (X<sub>10</sub>)</th>
+                        <th>PE (X<sub>11</sub>)</th>
+                        <th>Accepted (X<sub>12</sub>)</th>
                     </tr>
-                </thead>
-                <tbody class="blue-grey darken-4">
-                    <tr>
-                        <td>Problems Tried</td>
-                        <td id="DevTriedProblems"></td>
-                    </tr>
-                    <tr>
-                        <td>Solved</td>
-                        <td id="DevSolvedProblems"></td>
-                    </tr>
-                    <tr>
-                        <td>Maximum Attempt</td>
-                        <td id="DevMaxAttemptedProblems"></td>
-                    </tr>
-                    <tr>
-                        <td>Max Solved</td>
-                        <td id="DevMaxAcceptedProblems"></td>
-                    </tr>
-                    <tr>
-                        <td>Accepted at 1st try</td>
-                        <td id="DevAcceptedAtFirstTry"></td>
-                    </tr>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <tr id="_rankAboveRow"></tr>
+                    <tr id="_subjectRow"></tr>
+                    <tr id="_rankBelowRow"></tr>
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <br/>
+            <p class="center-align"><b class="green-text">Note :</b> Ranking model implementation based on Linear Regression is about to arrive soon in Version 2.0 </p>
         </div>
     </div>
-</div>
+    
+    <!--  UVA html ends  -->
 
     </section>
 </div>

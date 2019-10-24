@@ -1,10 +1,8 @@
 <environment include="Development">
     <script type="text/javascript">
         var devModel = @Json.Serialize(Model);
-        
-        
+       
         <!--global variable, color array, -->
-        
         
         var colorArray = ["#003f5c", "#2f4b7c", "#665191", "#a05195", "#d45087", "#f95d6a", "#ff7c43", "#ffa600", "#00876c", "#439880", "#69a995", "#8bbaab", "#accbc0", "#cdddd7", "#eeeeee", "#efd2d2", "#eeb7b6", "#ea9b9c", "#e57e82", "#dd6069", "#d43d51", "#004c6d", "#255e7e", "#3d708f", "#5383a1", "#6996b3", "#7faac6", "#94bed9", "#abd2ec", "#c1e7ff",
             "#003f5c", "#2f4b7c", "#665191", "#a05195", "#d45087", "#f95d6a", "#ff7c43", "#ffa600", "#00876c", "#439880", "#69a995", "#8bbaab", "#accbc0", "#cdddd7", "#eeeeee", "#efd2d2", "#eeb7b6", "#ea9b9c", "#e57e82", "#dd6069", "#d43d51", "#004c6d", "#255e7e", "#3d708f", "#5383a1", "#6996b3", "#7faac6", "#94bed9", "#abd2ec", "#c1e7ff"
@@ -120,6 +118,7 @@
             
             githubUsername = devModel.workingProfile.githubUsername;
             cf_handle = devModel.workingProfile.codeforcesUsername;
+            uvaHandle = devModel.workingProfile.uhuntUsername;
             
             <!--  Chart global style   -->
             Chart.defaults.global.defaultFontColor = "#fff";
@@ -258,6 +257,66 @@
             }catch (e) {
               showErrorToast("Invalid Username");
             }
+            <!--  Codeforces ends  -->
+            
+            
+            <!--  Uva initiates  -->
+            
+            var uhDIV = $("#UHuntResume");
+            try {
+              if (uvaHandle != null) {
+                       
+                                      requestToUhunt = $.get(uva_api_url + 'uname2uid/' + uvaHandle, function(data, status) {
+                                          /*
+                                           ** UVA username needs to be converted to user id first
+                                           ** If UVA returns 0, that means the username is invalid
+                                           */
+                                          if (data === 0) {
+                                              showErrorToast("Invalid Username");
+                                          } else {
+                                              requestToUhunt2 = $.get(uva_api_url + 'subs-user/' + data, function(Submission, SubmissionStatus) {
+                                                  uvaAllSubmissions = Submission.subs;
+              
+                                                  // Check number of submissions
+                                                  if (uvaAllSubmissions.length < 1) {
+                                                      showErrorToast("Sorry, No Submission on UVA");
+                                                  } else {
+                                                      UvaSubmissionProcessor(uvaAllSubmissions);
+              
+                                                      // Regression
+                                                      requestToUhunt3 = $.get(uva_api_url + 'ranklist/' + data + '/1/1', function(ranksInfo, StatusRank) {
+                                                          requestToUhunt4 = $.get(uva_api_url + 'subs-user/' + ranksInfo[0].userid, function(SubmissionAbove, StatusAbove) {
+                                                              UvaAboveSubmissionProcessor(SubmissionAbove.subs);
+                                                          });
+                                                          requestToUHunt5 = $.get(uva_api_url + 'subs-user/' + ranksInfo[2].userid, function(SubmissionBelow, StatusBelow) {
+                                                              UvaBelowSubmissionProcessor(SubmissionBelow.subs);
+                                                              UVARankingProcessor(ranksInfo);
+              
+                                                              // Regression
+                                                              uhDivRegressionLoader.show();
+                                                              regressionDatasetTableConstructor();
+              
+                                                          });
+                                                      });
+              
+                                                      uhDIV.show();
+                                                      wordCounter();
+                                                  }
+                                              });
+                                          }
+                                      });
+                                      uhuntPreload.hide();
+                                  } else {
+                                      uhuntPreload.hide();
+                                      uhDIV.hide();
+                                      showUserDefinedToast("UVA is Private", "amber darken-2 rounded");
+                                  }
+
+            }catch (e) {
+              showErrorToast("Invalid Username");
+            }
+            
+            <!--  Uva ends  -->
         });
         
         <!--  Github functions initiates  -->
@@ -616,6 +675,189 @@ function CodeForcesEffortSummary() {
 }
 
         <!--  Codeforces functions ends  -->
+        
+        <!-- Uva functions inititates  -->
+        function UvaSubmissionProcessor(data) {
+            for (var i = 0; i < data.length; i++) {
+                incrementVerdict(data[i][2]);
+                incrementLanguages(data[i][5]);
+                submissionRank(data[i][6]);
+            }
+            $('#_uvaTotalSubmissions').text(data.length);
+            $('#_uvaAcceptedSubmissionNumber').text(uvaVerdicts["Accepted"]);
+            $('#_uvaTotalWrongSubmissions').text(uvaVerdicts["WrongAnswer"]);
+        }
+        
+        function incrementVerdict(verdictNumber) {
+            if (verdictNumber === 10) {
+                uvaVerdicts["SubmissionError"]++;
+            }
+            if (verdictNumber === 15) {
+                uvaVerdicts["CantBeJudged"]++;
+            }
+            if (verdictNumber === 20) {
+                uvaVerdicts["InQueue"]++;
+            }
+            if (verdictNumber === 30) {
+                uvaVerdicts["CompileError"]++;
+            }
+            if (verdictNumber === 35) {
+                uvaVerdicts["RestrictedFunction"]++;
+            }
+            if (verdictNumber === 40) {
+                uvaVerdicts["RuntimeError"]++;
+            }
+            if (verdictNumber === 45) {
+                uvaVerdicts["OutputLimit"]++;
+            }
+            if (verdictNumber === 50) {
+                uvaVerdicts["TimeLimit"]++;
+            }
+            if (verdictNumber === 60) {
+                uvaVerdicts["MemoryLimit"]++;
+            }
+            if (verdictNumber === 70) {
+                uvaVerdicts["WrongAnswer"]++;
+            }
+            if (verdictNumber === 80) {
+                uvaVerdicts["PresentationError"]++;
+            }
+            if (verdictNumber === 90) {
+                uvaVerdicts["Accepted"]++;
+            }
+        }
+        
+        function incrementLanguages(languageNumber) {
+            if (languageNumber === 1) {
+                uvaLanguages["ANSI_C"]++;
+            } else if (languageNumber === 2) {
+                uvaLanguages["Java"]++;
+            } else if (languageNumber === 3) {
+                uvaLanguages["C++"]++;
+            } else if (languageNumber === 4) {
+                uvaLanguages["Pascal"]++;
+            } else if (languageNumber === 5) {
+                uvaLanguages["C++11"]++;
+            } else {
+                uvaLanguages["Python"]++;
+            }
+        }
+        
+        function submissionRank(rankNumber) {
+            if (uvaSubmissionRank[rankNumber] === undefined) {
+                uvaSubmissionRank[rankNumber] = 1;
+            } else {
+                uvaSubmissionRank[rankNumber] += 1;
+            }
+        
+            if (rankNumber > maxKeySubmissionRank) {
+                maxKeySubmissionRank = rankNumber;
+            }
+            if (rankNumber < minKeySubmissionRank) {
+                minKeySubmissionRank = rankNumber;
+            }
+        }
+        
+        function UvaAboveSubmissionProcessor(data) {
+            for (var i = 0; i < data.length; i++) {
+                incrementAboveVerdict(data[i][2]);
+            }
+        }
+        
+        function incrementAboveVerdict(verdictNumber) {
+            if (verdictNumber === 10) {
+                uvaVerdictsAbove["SubmissionError"]++;
+            }
+            if (verdictNumber === 15) {
+                uvaVerdictsAbove["CantBeJudged"]++;
+            }
+            if (verdictNumber === 20) {
+                uvaVerdictsAbove["InQueue"]++;
+            }
+            if (verdictNumber === 30) {
+                uvaVerdictsAbove["CompileError"]++;
+            }
+            if (verdictNumber === 35) {
+                uvaVerdictsAbove["RestrictedFunction"]++;
+            }
+            if (verdictNumber === 40) {
+                uvaVerdictsAbove["RuntimeError"]++;
+            }
+            if (verdictNumber === 45) {
+                uvaVerdictsAbove["OutputLimit"]++;
+            }
+            if (verdictNumber === 50) {
+                uvaVerdictsAbove["TimeLimit"]++;
+            }
+            if (verdictNumber === 60) {
+                uvaVerdictsAbove["MemoryLimit"]++;
+            }
+            if (verdictNumber === 70) {
+                uvaVerdictsAbove["WrongAnswer"]++;
+            }
+            if (verdictNumber === 80) {
+                uvaVerdictsAbove["PresentationError"]++;
+            }
+            if (verdictNumber === 90) {
+                uvaVerdictsAbove["Accepted"]++;
+            }
+        }
+        
+        function UvaBelowSubmissionProcessor(data) {
+            for (var i = 0; i < data.length; i++) {
+                incrementBelowVerdict(data[i][2]);
+            }
+        }
+        
+        function incrementBelowVerdict(verdictNumber) {
+            if (verdictNumber === 10) {
+                uvaVerdictsBelow["SubmissionError"]++;
+            }
+            if (verdictNumber === 15) {
+                uvaVerdictsBelow["CantBeJudged"]++;
+            }
+            if (verdictNumber === 20) {
+                uvaVerdictsBelow["InQueue"]++;
+            }
+            if (verdictNumber === 30) {
+                uvaVerdictsBelow["CompileError"]++;
+            }
+            if (verdictNumber === 35) {
+                uvaVerdictsBelow["RestrictedFunction"]++;
+            }
+            if (verdictNumber === 40) {
+                uvaVerdictsBelow["RuntimeError"]++;
+            }
+            if (verdictNumber === 45) {
+                uvaVerdictsBelow["OutputLimit"]++;
+            }
+            if (verdictNumber === 50) {
+                uvaVerdictsBelow["TimeLimit"]++;
+            }
+            if (verdictNumber === 60) {
+                uvaVerdictsBelow["MemoryLimit"]++;
+            }
+            if (verdictNumber === 70) {
+                uvaVerdictsBelow["WrongAnswer"]++;
+            }
+            if (verdictNumber === 80) {
+                uvaVerdictsBelow["PresentationError"]++;
+            }
+            if (verdictNumber === 90) {
+                uvaVerdictsBelow["Accepted"]++;
+            }
+        }
+        
+        function UVARankingProcessor(ranksInfo) {
+            rankingInfo["rankingOfAboveOfQueried"] = ranksInfo[0].rank;
+            rankingInfo["rankingOfQueried"] = ranksInfo[1].rank;
+            rankingInfo["rankingOfBelowOfQueried"] = ranksInfo[2].rank;
+            regressionDataConstructor(ranksInfo);
+        }
+
+        <!--  Uva functions ends   -->
+        
+        
         
         
         <!--  Functions to clear cache   -->
