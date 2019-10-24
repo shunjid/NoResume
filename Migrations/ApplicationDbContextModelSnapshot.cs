@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NoResume.Models;
 
 namespace NoResume.Migrations
@@ -213,6 +214,11 @@ namespace NoResume.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CurrentCity");
+
+                    b.Property<string>("DeveloperName")
+                        .IsRequired();
+
+                    b.Property<string>("DeveloperPhoneNumber");
 
                     b.Property<bool>("IsAvailableForJob");
 

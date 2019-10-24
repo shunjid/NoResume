@@ -53,7 +53,7 @@ namespace NoResume.Controllers
         // POST: ShortBios/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public JsonResult Edit(string id, [Bind("DeveloperId,ShortDescription,CurrentCity,IsAvailableForJob")] ShortBio shortBio)
+        public JsonResult Edit(string id, [Bind("DeveloperId,DeveloperName,DeveloperPhoneNumber,ShortDescription,CurrentCity,IsAvailableForJob")] ShortBio shortBio)
         {
             if (id != shortBio.DeveloperId)
             {

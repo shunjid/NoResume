@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\no-resume\\NoResume.csproj": {}
+    "E:\\NoResume\\NoResume.csproj": {}
   },
   "projects": {
-    "E:\\no-resume\\NoResume.csproj": {
+    "E:\\NoResume\\NoResume.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\no-resume\\NoResume.csproj",
+        "projectUniqueName": "E:\\NoResume\\NoResume.csproj",
         "projectName": "NoResume",
-        "projectPath": "E:\\no-resume\\NoResume.csproj",
+        "projectPath": "E:\\NoResume\\NoResume.csproj",
         "packagesPath": "C:\\Users\\Zubu\\.nuget\\packages\\",
-        "outputPath": "E:\\no-resume\\obj\\",
+        "outputPath": "E:\\NoResume\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

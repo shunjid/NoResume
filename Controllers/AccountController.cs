@@ -59,7 +59,8 @@ namespace NoResume.Controllers
                     await _signInManager.SignInAsync(userObject, isPersistent:false);
                     var shortBio = new ShortBio
                     {
-                        DeveloperId = initDevelopers.DevId
+                        DeveloperId = initDevelopers.DevId,
+                        DeveloperName = mailAddress.User
                     };
 
                     var social = new SocialProfile
