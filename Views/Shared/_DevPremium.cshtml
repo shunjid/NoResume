@@ -13,7 +13,7 @@
         // CodeForces Initiative
         var requestToCodeForces;
         var cf_api_url = 'https://codeforces.com/api/';
-        var cf_handle;
+        var cf_handle = devModel.workingProfile.codeforcesUsername;
         var cf_problems_attempt_solved = {};
         var cf_verdicts = {};
         var cf_languages = {};
@@ -118,6 +118,9 @@
             Chart.defaults.global.defaultFontSize = 16;
             Chart.defaults.global.animation.duration = 1500;
         
+            <!--  Github initiated   -->
+            
+            
             var gitDIV = $("#GithubResume");
         
             try {
@@ -179,8 +182,76 @@
             } catch (e) {
                 showErrorToast("Invalid Username");
             }
+            
+            <!--  Github ends  -->
+            
+            
+            <!--  Codeforces initiates  -->
+            
+            var cfDIV = $("#CForcesResume");
+            try {
+              if (cf_handle != null) {
+                                    
+                                      requestToCodeForces = $.get(cf_api_url + 'user.status', {
+                                          handle: cf_handle
+                                      }, function(data, status) {
+                                          if (data.result.length < 1) {
+                                              showErrorToast("No Submissions on CodeForces");
+                                          } else {
+                                              CodeForcesDataProcessor(data);
+              
+                                              // Set Pie Chart : VERDICT
+                                              var verdictDataArray = $.map(cf_verdicts, function(v) {
+                                                  return v;
+                                              });
+                                              CodeForcesCreateCharts(Object.keys(cf_verdicts), verdictDataArray, 'pie', $('#verdicts_codeForces_pie'), '');
+              
+                                              // Set Pie Chart : Languages
+                                              var languageDataArray = $.map(cf_languages, function(v) {
+                                                  return v;
+                                              });
+                                              CodeForcesCreateCharts(Object.keys(cf_languages), languageDataArray, 'pie', $('#languages_codeForces_pie'), '');
+              
+                                              // Set Doughnut Chart : Tags
+                                              var tagsDataArray = $.map(cf_tags, function(v) {
+                                                  return v;
+                                              });
+                                              CodeForcesCreateCharts(Object.keys(cf_tags), tagsDataArray, 'doughnut', $('#tags_codeForces_doughnut'), '');
+              
+                                              // Set Bar Chart : Levels
+                                              cf_attempt_level_quality = sortObjects(cf_attempt_level_quality);
+                                              var levelsDataArray = $.map(cf_attempt_level_quality, function(v) {
+                                                  return v;
+                                              });
+                                              CodeForcesCreateBarCharts(Object.keys(cf_attempt_level_quality), levelsDataArray, $('#levels_codeForces_bar'), 'Levels of ' + cf_handle);
+              
+                                              // Set Bar Chart : Tags
+                                              var ratingsDataArray = $.map(cf_attempt_rating_quality, function(v) {
+                                                  return v;
+                                              });
+                                              CodeForcesCreateBarCharts(Object.keys(cf_attempt_rating_quality), ratingsDataArray, $('#problem_rating_codeForces_bar'), 'Ratings of ' + cf_handle);
+              
+                                              CodeForcesEffortSummary();
+                                              cfDIV.show();
+                                          }
+                                      
+                                      })
+                                  } else {
+                                      /*
+                                       ** This works when CodeForces username is being returned null from controller
+                                       ** Possible reason : User removed or, never provided/User made it private
+                                       */
+                                      
+                                      cfDIV.hide();
+                                      showUserDefinedToast("CodeForces is Private", "indigo darken-2 rounded");
+                                  }
+
+            }catch (e) {
+              showErrorToast("Invalid Username");
+            }
         });
         
+        <!--  Github functions initiates  -->
         
         function _initiateLanguages(repositories) {
             for (var i = 0; i < repositories.length; i++) {
@@ -254,31 +325,288 @@
             });
         }
         
-        
         function sortObjectsByAsc(objects) {
-            var newObject = {};
+                    var newObject = {};
+                
+                    var sortedArray = sortPropertiesByAsc(objects);
+                    for (var i = 0; i < sortedArray.length; i++) {
+                        var key = sortedArray[i][0];
+                        newObject[key] = sortedArray[i][1];
+                    }
+                    return newObject;
+                }
+                
+                function sortPropertiesByAsc(obj) {
+                    // convert object into array
+                    var sortable = [];
+                    for (var key in obj)
+                        if (obj.hasOwnProperty(key))
+                            sortable.push([key, obj[key]]); // each item is an array in format [key, value]
+                
+                    // sort items by value
+                    sortable.sort(function(a, b) {
+                        return b[1] - a[1];
+                    });
+                    return sortable;
+                }
+                
         
-            var sortedArray = sortPropertiesByAsc(objects);
-            for (var i = 0; i < sortedArray.length; i++) {
-                var key = sortedArray[i][0];
-                newObject[key] = sortedArray[i][1];
+        <!--  Github functions ends  -->
+        
+        
+        <!--  Codeforces functions initiates  -->
+        
+        
+function CodeForcesDataProcessor(data) {
+
+    for (var i = data.result.length - 1; i >= 0; i--) {
+        var submission = data.result[i];
+
+        /*
+         ** #problemId : Concatenates contestId (1110) and submissionID (A)
+         ** Example    : 1110-A
+         **
+         ** cf_problems_attempt_solved[problemId] is checked firstly if it is defined or, not
+         ** if cf_problems_attempt_solved[problemId] is not defined then attempt is set to 1
+         ** and solved is set to 0
+         **
+         ** else it will be counting till the problem is solved
+         ** the goal is to count how many attempts was taken before solved
+         */
+        var problemId = submission.problem.contestId + '-' + submission.problem.index;
+
+        if (cf_problems_attempt_solved[problemId] === undefined) {
+            cf_problems_attempt_solved[problemId] = {
+                attempts: 1,
+                solved: 0
+            };
+        } else {
+            if (cf_problems_attempt_solved[problemId].solved === 0) {
+                cf_problems_attempt_solved[problemId].attempts++;
             }
-            return newObject;
         }
-        
-        function sortPropertiesByAsc(obj) {
-            // convert object into array
-            var sortable = [];
-            for (var key in obj)
-                if (obj.hasOwnProperty(key))
-                    sortable.push([key, obj[key]]); // each item is an array in format [key, value]
-        
-            // sort items by value
-            sortable.sort(function(a, b) {
-                return b[1] - a[1];
+
+        /*
+         ** #VERDICTS COUNTER
+         **
+         ** Counting number of each type of verdicts
+         ** Example: OK , COMPILATION_ERROR , MEMORY_LIMIT_EXCEEDED
+         */
+        if (cf_verdicts[submission.verdict] === undefined) {
+            cf_verdicts[submission.verdict] = 1;
+        } else {
+            cf_verdicts[submission.verdict]++;
+        }
+
+        /*
+         ** #Language COUNTER
+         *
+         ** Counting number of each type of languages
+         ** Example: C++, Java, Kotlin
+         */
+        if (cf_languages[submission.programmingLanguage] === undefined) {
+            cf_languages[submission.programmingLanguage] = 1;
+        } else {
+            cf_languages[submission.programmingLanguage]++;
+        }
+
+
+        /*
+         ** #Counting Solved : HOW_MANY_WAYS
+         ** It means number of times a problem is solved according to VERDICT == OK
+         **
+         ** It will increment cf_problems_attempt_solved[problemID].solved
+         */
+        if (submission.verdict === 'OK') {
+            cf_problems_attempt_solved[problemId].solved++;
+        }
+
+        // Counting Tags, levels, Problem Rating at MIN[SOLVED]
+        if (submission.verdict === 'OK' && cf_problems_attempt_solved[problemId].solved === 1) {
+            /*
+             ** Counting Tags
+             ** solved is counted @@1 because
+             ** if someone solves a problem so many times then we can take only one tag
+             **/
+            submission.problem.tags.forEach(function(currentValue) {
+                if (cf_tags[currentValue] === undefined) {
+                    cf_tags[currentValue] = 1;
+                } else {
+                    cf_tags[currentValue]++;
+                }
             });
-            return sortable;
+
+            // Level of quality problems being tried : A, B, B1 
+            if (cf_attempt_level_quality[submission.problem.index] === undefined) {
+                cf_attempt_level_quality[submission.problem.index] = 1;
+            } else {
+                cf_attempt_level_quality[submission.problem.index]++;
+            }
+
+            // Level of rating of problems being tried : 2100, 1500
+            if (cf_attempt_rating_quality[submission.problem.rating] === undefined) {
+                cf_attempt_rating_quality[submission.problem.rating] = 1;
+            } else {
+                cf_attempt_rating_quality[submission.problem.rating]++;
+            }
+            delete cf_attempt_rating_quality.undefined;
         }
+    }
+}
+
+function CodeForcesCreateCharts(keys, dataArray, chartType, context, titleText) {
+    var pieChart;
+    if (pieChart != null) {
+        pieChart.destroy();
+    }
+
+    pieChart = new Chart(context, {
+        type: chartType,
+        data: {
+            labels: keys,
+            datasets: [{
+                label: 'Value',
+                data: dataArray,
+                backgroundColor: colorArray,
+                borderColor: colorArray,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: titleText,
+                fontSize: 25
+            },
+            responsive: true,
+            responsiveAnimationDuration: 500,
+            mainAspectRatio: false,
+            legend: {
+                display: false
+            }
+        }
+    });
+}
+
+function sortObjects(objects) {
+    var newObject = {};
+
+    var sortedArray = sortProperties(objects);
+    for (var i = 0; i < sortedArray.length; i++) {
+        var key = sortedArray[i][0];
+        newObject[key] = sortedArray[i][1];
+    }
+    return newObject;
+}
+
+function sortProperties(obj) {
+    // convert object into array
+    var sortable = [];
+    for (var key in obj)
+        if (obj.hasOwnProperty(key))
+            sortable.push([key, obj[key]]); // each item is an array in format [key, value]
+
+    // sort items by value
+    sortable.sort(function(a, b) {
+        return a[1] - b[1]; // compare numbers
+    });
+    return sortable; // array in format [ [ key1, val1 ], [ key2, val2 ], ... ]
+}
+
+function CodeForcesCreateBarCharts(keys, dataArray, context, titleText) {
+    var myChart;
+    if (myChart != null) {
+        myChart.destroy();
+    }
+
+    myChart = new Chart(context, {
+        type: 'bar',
+        data: {
+            labels: keys,
+            datasets: [{
+                label: titleText,
+                data: dataArray,
+                backgroundColor: colorArray,
+                borderColor: colorArray,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            title: {
+                display: false,
+                text: titleText,
+                fontSize: 25
+            },
+            legend: {
+                display: false
+            },
+            responsive: true,
+            responsiveAnimationDuration: 500,
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        maxRotation: 90,
+                        minRotation: 80
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+}
+
+function CodeForcesEffortSummary() {
+    var numberOfProblemsTried = 0;
+    var numberOfProblemsSolved = 0;
+
+    var maximumAttemptsBeforeSolvingAProblem = 0;
+    var maximumProblemBeenAttempted = '';
+
+    var OneSubmissionTry = 0;
+    var problemsThatAreNotSolved = [];
+
+    var maximumNumberAProblemAccepted = 0;
+    var maximumAcceptedProblemInfo = '';
+
+    for (var submissions in cf_problems_attempt_solved) {
+
+        // For Each Submission : numberOfTimesTried increments to 1 
+        numberOfProblemsTried += 1;
+
+        // For Each Submission : count total number of problems been solved
+        if (cf_problems_attempt_solved[submissions].solved > 0) {
+            numberOfProblemsSolved += 1;
+        }
+
+        // Count Max Attempt Comparing With Each Attempt
+        if (cf_problems_attempt_solved[submissions].attempts > maximumAttemptsBeforeSolvingAProblem) {
+            maximumAttemptsBeforeSolvingAProblem = cf_problems_attempt_solved[submissions].attempts;
+            maximumProblemBeenAttempted = submissions;
+        }
+
+        // Count Max Accepted Comparing With Each Solved
+        if (cf_problems_attempt_solved[submissions].solved > maximumNumberAProblemAccepted) {
+            maximumNumberAProblemAccepted = cf_problems_attempt_solved[submissions].solved;
+            maximumAcceptedProblemInfo = submissions;
+        }
+
+        // One Submission Solved
+        if (cf_problems_attempt_solved[submissions].solved === 1 && cf_problems_attempt_solved[submissions].attempts === 1) {
+            OneSubmissionTry += 1;
+        }
+    }
+    $('#DevTriedProblems').text(numberOfProblemsTried);
+    $('#DevSolvedProblems').text(numberOfProblemsSolved);
+    $('#DevMaxAttemptedProblems').text(maximumAttemptsBeforeSolvingAProblem + "(" + maximumProblemBeenAttempted + ")");
+    $('#DevMaxAcceptedProblems').text(maximumNumberAProblemAccepted + "(" + maximumAcceptedProblemInfo + ")");
+    $('#DevAcceptedAtFirstTry').text(OneSubmissionTry);
+}
+
+        <!--  Codeforces functions ends  -->
         
         
         function showUserDefinedToast(message, style) {
