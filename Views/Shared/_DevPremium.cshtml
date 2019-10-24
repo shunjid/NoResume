@@ -206,6 +206,81 @@
             }
         }
         
+        function days_between(date1, date2) {
+        
+            // The number of milliseconds in one day
+            var ONE_DAY = 1000 * 60 * 60 * 24;
+        
+            // Convert both dates to milliseconds
+            var date1_ms = date1.getTime();
+            var date2_ms = date2.getTime();
+        
+            // Calculate the difference in milliseconds
+            var difference_ms = Math.abs(date1_ms - date2_ms);
+        
+            // Convert back to days and return
+            return Math.round(difference_ms / ONE_DAY);
+        
+        }
+        
+        
+        function _demonstrateLanguagesGitHub(gitHubLanguageChart, chartType, titleText) {
+            var tempLang = {};
+            tempLang = sortObjectsByAsc(languagesOfRepositories);
+        
+            pieChartGitHub = new Chart(gitHubLanguageChart, {
+                type: chartType,
+                data: {
+                    labels: Object.keys(tempLang),
+                    datasets: [{
+                        label: 'Value',
+                        data: $.map(tempLang, function(v) {
+                            return v;
+                        }),
+                        backgroundColor: colorArray,
+                        borderColor: colorArray,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: titleText,
+                        fontSize: 25
+                    },
+                    responsive: true,
+                    responsiveAnimationDuration: 500,
+                    mainAspectRatio: false
+                }
+            });
+        }
+
+
+        function sortObjectsByAsc(objects) {
+            var newObject = {};
+        
+            var sortedArray = sortPropertiesByAsc(objects);
+            for (var i = 0; i < sortedArray.length; i++) {
+                var key = sortedArray[i][0];
+                newObject[key] = sortedArray[i][1];
+            }
+            return newObject;
+        }
+
+        function sortPropertiesByAsc(obj) {
+            // convert object into array
+            var sortable = [];
+            for (var key in obj)
+                if (obj.hasOwnProperty(key))
+                    sortable.push([key, obj[key]]); // each item is an array in format [key, value]
+        
+            // sort items by value
+            sortable.sort(function(a, b) {
+                return b[1] - a[1];
+            });
+            return sortable;
+        }
+
         
         function showUserDefinedToast(message, style) {
             M.toast({
