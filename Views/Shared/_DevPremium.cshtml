@@ -120,6 +120,9 @@ $(document).ready(function () {
 	cf_handle = devModel.workingProfile.codeforcesUsername;
 	uvaHandle = devModel.workingProfile.uhuntUsername;
 
+	showPremiumBio();	
+	
+	
 	<!--  Chart global style   -->
 	Chart.defaults.global.defaultFontColor = "#fff";
 	Chart.defaults.global.defaultFontFamily = "'Quicksand'";
@@ -912,8 +915,6 @@ function regressionDatasetTableConstructor() {
 			}
 		}
 	}
-	uhDivRegressionLoader.hide();
-	uhDIVRegression.show();
 }
 
 function wordCounter() {
@@ -1031,7 +1032,14 @@ function showErrorToast(message) {
 		classes: 'red darken-1 rounded'
 	});
 }
-
 <!--  Functions to show toast messages ends   -->
+
+<!--  Premium CV -->
+function showPremiumBio()
+{
+	$("#p_shortbio").html(devModel.shortBio.shortDescription);
+}
+
+
 </script>
 </environment>
