@@ -265,52 +265,48 @@
             var uhDIV = $("#UHuntResume");
             try {
               if (uvaHandle != null) {
-                       
-                                      requestToUhunt = $.get(uva_api_url + 'uname2uid/' + uvaHandle, function(data, status) {
-                                          /*
-                                           ** UVA username needs to be converted to user id first
-                                           ** If UVA returns 0, that means the username is invalid
-                                           */
-                                          if (data === 0) {
-                                              showErrorToast("Invalid Username");
-                                          } else {
-                                              requestToUhunt2 = $.get(uva_api_url + 'subs-user/' + data, function(Submission, SubmissionStatus) {
-                                                  uvaAllSubmissions = Submission.subs;
-              
-                                                  // Check number of submissions
-                                                  if (uvaAllSubmissions.length < 1) {
-                                                      showErrorToast("Sorry, No Submission on UVA");
-                                                  } else {
-                                                      UvaSubmissionProcessor(uvaAllSubmissions);
-              
-                                                      // Regression
-                                                      requestToUhunt3 = $.get(uva_api_url + 'ranklist/' + data + '/1/1', function(ranksInfo, StatusRank) {
-                                                          requestToUhunt4 = $.get(uva_api_url + 'subs-user/' + ranksInfo[0].userid, function(SubmissionAbove, StatusAbove) {
-                                                              UvaAboveSubmissionProcessor(SubmissionAbove.subs);
-                                                          });
-                                                          requestToUHunt5 = $.get(uva_api_url + 'subs-user/' + ranksInfo[2].userid, function(SubmissionBelow, StatusBelow) {
-                                                              UvaBelowSubmissionProcessor(SubmissionBelow.subs);
-                                                              UVARankingProcessor(ranksInfo);
-              
-                                                              // Regression
-                                                              uhDivRegressionLoader.show();
-                                                              regressionDatasetTableConstructor();
-              
-                                                          });
-                                                      });
-              
-                                                      uhDIV.show();
-                                                      wordCounter();
-                                                  }
-                                              });
-                                          }
-                                      });
-                                      uhuntPreload.hide();
-                                  } else {
-                                      uhuntPreload.hide();
-                                      uhDIV.hide();
-                                      showUserDefinedToast("UVA is Private", "amber darken-2 rounded");
-                                  }
+        
+              requestToUhunt = $.get(uva_api_url + 'uname2uid/' + uvaHandle, function(data, status) {
+                  /*
+                   ** UVA username needs to be converted to user id first
+                   ** If UVA returns 0, that means the username is invalid
+                   */
+                  if (data === 0) {
+                      showErrorToast("Invalid Username");
+                  } else {
+                      requestToUhunt2 = $.get(uva_api_url + 'subs-user/' + data, function(Submission, SubmissionStatus) {
+                          uvaAllSubmissions = Submission.subs;
+        
+                          // Check number of submissions
+                          if (uvaAllSubmissions.length < 1) {
+                              showErrorToast("Sorry, No Submission on UVA");
+                          } else {
+                              UvaSubmissionProcessor(uvaAllSubmissions);
+        
+                              // Regression
+                              requestToUhunt3 = $.get(uva_api_url + 'ranklist/' + data + '/1/1', function(ranksInfo, StatusRank) {
+                                  requestToUhunt4 = $.get(uva_api_url + 'subs-user/' + ranksInfo[0].userid, function(SubmissionAbove, StatusAbove) {
+                                      UvaAboveSubmissionProcessor(SubmissionAbove.subs);
+                                  });
+                                  requestToUHunt5 = $.get(uva_api_url + 'subs-user/' + ranksInfo[2].userid, function(SubmissionBelow, StatusBelow) {
+                                      UvaBelowSubmissionProcessor(SubmissionBelow.subs);
+                                      UVARankingProcessor(ranksInfo); 
+                                      regressionDatasetTableConstructor();
+       
+                                  });
+                              });        
+                              uhDIV.show();
+                              wordCounter();
+                          }
+                      });
+                  }
+              });
+         
+          } else {
+         
+              uhDIV.hide();
+              showUserDefinedToast("UVA is Private", "amber darken-2 rounded");
+          }
 
             }catch (e) {
               showErrorToast("Invalid Username");
@@ -853,6 +849,85 @@ function CodeForcesEffortSummary() {
             rankingInfo["rankingOfQueried"] = ranksInfo[1].rank;
             rankingInfo["rankingOfBelowOfQueried"] = ranksInfo[2].rank;
             regressionDataConstructor(ranksInfo);
+        }
+        
+        function regressionDataConstructor(ranksInfo) {
+            regressionDataArray.push({
+                "name": ranksInfo[0].name,
+                "ranking": ranksInfo[0].rank,
+                "verdict": uvaVerdictsAbove
+            });
+            regressionDataArray.push({
+                "name": ranksInfo[1].name,
+                "ranking": ranksInfo[1].rank,
+                "verdict": uvaVerdicts
+            });
+            regressionDataArray.push({
+                "name": ranksInfo[2].name,
+                "ranking": ranksInfo[2].rank,
+                "verdict": uvaVerdictsBelow
+            });
+        }
+        
+        function regressionDatasetTableConstructor() {
+            // Regression Table Construction
+            var _aboveRow = document.getElementById("_rankAboveRow");
+            var _subjectRow = document.getElementById("_subjectRow");
+            var _belowRow = document.getElementById("_rankBelowRow");
+            _aboveRow.innerHTML = '';
+            _subjectRow.innerHTML = '';
+            _belowRow.innerHTML = '';
+        
+            var x = _aboveRow.insertCell(0);
+            x.innerHTML = regressionDataArray[0].name;
+            x = _aboveRow.insertCell(1);
+            x.innerHTML = regressionDataArray[0].ranking;
+        
+            x = _subjectRow.insertCell(0);
+            x.innerHTML = regressionDataArray[1].name;
+            x = _subjectRow.insertCell(1);
+            x.innerHTML = regressionDataArray[1].ranking;
+        
+            x = _belowRow.insertCell(0);
+            x.innerHTML = regressionDataArray[2].name;
+            x = _belowRow.insertCell(1);
+            x.innerHTML = regressionDataArray[2].ranking;
+        
+            for (var i = 0; i < regressionDataArray.length; i++) {
+                var tempVerdictArray = $.map(regressionDataArray[i].verdict, function(v) {
+                    return v;
+                });
+                for (var j = 0; j < tempVerdictArray.length; j++) {
+                    if (i === 0) {
+                        x = _aboveRow.insertCell(j + 2);
+                        x.innerHTML = tempVerdictArray[j];
+                    }
+                    if (i === 1) {
+                        x = _subjectRow.insertCell(j + 2);
+                        x.innerHTML = tempVerdictArray[j];
+                    }
+                    if (i === 2) {
+                        x = _belowRow.insertCell(j + 2);
+                        x.innerHTML = tempVerdictArray[j];
+                    }
+                }
+            }
+            uhDivRegressionLoader.hide();
+            uhDIVRegression.show();
+        }
+        
+        function wordCounter() {
+            $('.count').each(function() {
+                $(this).prop('Counter', 0).animate({
+                    Counter: $(this).text()
+                }, {
+                    duration: 8000,
+                    easing: 'swing',
+                    step: function(now) {
+                        $(this).text(Math.ceil(now));
+                    }
+                });
+            });
         }
 
         <!--  Uva functions ends   -->
