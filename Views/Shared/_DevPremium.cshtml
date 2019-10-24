@@ -13,7 +13,7 @@
         // CodeForces Initiative
         var requestToCodeForces;
         var cf_api_url = 'https://codeforces.com/api/';
-        var cf_handle = devModel.workingProfile.codeforcesUsername;
+        var cf_handle;
         var cf_problems_attempt_solved = {};
         var cf_verdicts = {};
         var cf_languages = {};
@@ -102,7 +102,7 @@
         var requestToGH3;
         
         var gitHubApiURL = "https://api.github.com/users/";
-        var githubUsername = devModel.workingProfile.githubUsername;
+        var githubUsername;
         var gitHubShortProfile = {};
         var languagesOfRepositories = {};
         var optimizedLanguages = {};
@@ -117,6 +117,9 @@
             _initClearDumpGH();
             _initClearDumpValuesCF();
             _initClearDumpValuesUVA();
+            
+            githubUsername = devModel.workingProfile.githubUsername;
+            cf_handle = devModel.workingProfile.codeforcesUsername;
             
             <!--  Chart global style   -->
             Chart.defaults.global.defaultFontColor = "#fff";
