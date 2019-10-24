@@ -1,9 +1,11 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+    <e p="C:\Users\Zubu\.Rider2019.2\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\Zubu\.Rider2019.2\config\extensions" t="IncludeRecursive" />
     <e p="C:\Users\Zubu\.Rider2019.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Zubu\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_.19.00" t="ExcludeRecursive" />
-    <e p="E:\no-resume" t="IncludeRecursive">
+    <e p="E:\NoResume" t="IncludeRecursive">
       <e p="_config.yml" t="Include" />
       <e p="app.config" t="Include" />
       <e p="appsettings.Development.json" t="Include" />
@@ -20,12 +22,8 @@
       <e p="Dockerfile" t="Include" />
       <e p="Making.md" t="Include" />
       <e p="Migrations" t="Include">
-        <e p="20190730181910_InitialAuth.cs" t="Include" />
-        <e p="20190730181910_InitialAuth.Designer.cs" t="Include" />
-        <e p="20190731075751_AuditImplemented.cs" t="Include" />
-        <e p="20190731075751_AuditImplemented.Designer.cs" t="Include" />
-        <e p="20190731085131_ImplementedOtherThreeModels.cs" t="Include" />
-        <e p="20190731085131_ImplementedOtherThreeModels.Designer.cs" t="Include" />
+        <e p="20191024113535_InitialCreate.cs" t="Include" />
+        <e p="20191024113535_InitialCreate.Designer.cs" t="Include" />
         <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
       </e>
       <e p="Models" t="Include">
@@ -40,6 +38,7 @@
         <e p="WorkingProfile.cs" t="Include" />
       </e>
       <e p="NoResume.csproj" t="IncludeRecursive" />
+      <e p="NoResume.db" t="Include" />
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
           <e p="netcoreapp2.2" t="Include">
