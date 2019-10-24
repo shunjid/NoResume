@@ -1,0 +1,182 @@
+﻿#card-stats {
+    padding-top: 12px
+}
+
+#chart-dashboard .card {
+    overflow: hidden
+}
+
+#chart-dashboard .card .card-content {
+    padding: 10px 14px
+}
+
+#chartjs .sample-chart-wrapper,
+#chartjs2 .sample-chart-wrapper,
+#chartjs3 .sample-chart-wrapper {
+    margin-top: -75px;
+    margin-bottom: -14px
+}
+
+.sample-chart-wrapper {
+    width: 100%
+}
+
+.chart-title {
+    font-size: 1.6rem;
+    font-weight: 300
+}
+
+.chart-revenue {
+    float: right;
+    padding: 8px;
+    text-align: center;
+    border-radius: 3px
+}
+
+.chart-revenue .chart-revenue-total {
+    font-size: .9rem;
+    margin: 0
+}
+
+.chart-revenue .chart-revenue-per {
+    font-size: .8rem;
+    margin: 0
+}
+
+.chart-revenue .chart-revenue-per i {
+    position: relative;
+    top: 5px
+}
+
+.chart-revenue-switch {
+    padding-top: 28px;
+    padding-right: 10px;
+    text-align: right;
+    color: #fff
+}
+
+#materialize-chartist .ct-chart-bar,
+#materialize-chartist .ct-chart-donut,
+#materialize-chartist .ct-chart-line,
+#materialize-chartist .ct-chart-pie {
+    height: 400px!important
+}
+
+.doughnut-chart-status {
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    top: -75px;
+    left: 0;
+    height: 0;
+    text-align: center
+}
+
+.doughnut-chart-status p {
+    margin-top: -5px
+}
+
+.doughnut-chart-legend li {
+    font-size: .9rem;
+    padding: 2px 0
+}
+
+.doughnut-chart-legend li:before {
+    display: block;
+    float: left;
+    width: 8px;
+    height: 8px;
+    margin-top: 6px;
+    margin-right: 4px;
+    content: ''
+}
+
+a.button-collapse.top-nav {
+    font-size: 32px;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 7.5%;
+    float: none;
+    margin-left: 1.5rem;
+    color: #fff
+}
+
+.trending-bar-chart-wrapper {
+    width: 100%
+}
+
+.btn-move-up {
+    position: relative;
+    top: -28px;
+    right: -18px;
+    margin-right: 10px!important
+}
+
+.jqstooltip {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none!important
+}
+
+.tooltip-class {
+    overflow: hidden;
+    width: 30px;
+    height: 20px;
+    color: #fff
+}
+
+#ct2-chart .ct-series.ct-series-a .ct-area {
+    fill: #00bcd4
+}
+
+#ct2-chart .ct-series.ct-series-a .ct-point {
+    stroke: #00bcd4
+}
+
+#ct2-chart .ct-series.ct-series-a .ct-line {
+    stroke: #54e2f4
+}
+
+.socialbox .logo {
+    font-size: 28px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #fff
+}
+
+.socialbox .info {
+    font-size: 15px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    margin: 0;
+    padding: 0;
+    color: #fff
+}
+
+.chartist-tooltip.tooltip-show {
+    display: inline-block
+}
+
+.chartist-tooltip {
+    display: none
+}
+
+@media only screen and (min-device-width:320px) and (max-device-width:480px) {
+    .doughnut-chart-status {
+        display: none
+    }
+}
+
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+    .doughnut-chart-status {
+        display: none
+    }
+    #card-stats .card-stats-compare {
+        font-size: .8rem
+    }
+}
+

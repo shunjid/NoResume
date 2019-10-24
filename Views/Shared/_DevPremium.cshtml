@@ -2,8 +2,226 @@
     <script type="text/javascript">
         var devModel = @Json.Serialize(Model);
     
+        <!--  global variable, color array,   -->
+        var colorArray = ["#003f5c", "#2f4b7c", "#665191", "#a05195", "#d45087", "#f95d6a", "#ff7c43", "#ffa600", "#00876c", "#439880", "#69a995", "#8bbaab", "#accbc0", "#cdddd7", "#eeeeee", "#efd2d2", "#eeb7b6", "#ea9b9c", "#e57e82", "#dd6069", "#d43d51", "#004c6d", "#255e7e", "#3d708f", "#5383a1", "#6996b3", "#7faac6", "#94bed9", "#abd2ec", "#c1e7ff",
+            "#003f5c", "#2f4b7c", "#665191", "#a05195", "#d45087", "#f95d6a", "#ff7c43", "#ffa600", "#00876c", "#439880", "#69a995", "#8bbaab", "#accbc0", "#cdddd7", "#eeeeee", "#efd2d2", "#eeb7b6", "#ea9b9c", "#e57e82", "#dd6069", "#d43d51", "#004c6d", "#255e7e", "#3d708f", "#5383a1", "#6996b3", "#7faac6", "#94bed9", "#abd2ec", "#c1e7ff"
+        ];
+        
+        // CodeForces Initiative
+        var requestToCodeForces;
+        var cf_api_url = 'https://codeforces.com/api/';
+        var cf_handle;
+        var cf_problems_attempt_solved = {};
+        var cf_verdicts = {};
+        var cf_languages = {};
+        var cf_tags = {};
+        var cf_attempt_level_quality = {};
+        var cf_attempt_rating_quality = {};
+        
+        // Uhunt Initiative
+        var requestToUhunt;
+        var requestToUhunt2;
+        var requestToUhunt3;
+        var requestToUhunt4;
+        var requestToUHunt5;
+        
+        var uva_api_url = 'https://uhunt.onlinejudge.org/api/';
+        var uvaHandle;
+        var uvaAllSubmissions = [];
+        var uvaVerdicts = {
+            "SubmissionError": 0,
+            "CantBeJudged": 0,
+            "InQueue": 0,
+            "CompileError": 0,
+            "RestrictedFunction": 0,
+            "RuntimeError": 0,
+            "OutputLimit": 0,
+            "TimeLimit": 0,
+            "MemoryLimit": 0,
+            "WrongAnswer": 0,
+            "PresentationError": 0,
+            "Accepted": 0
+        };
+        var uvaVerdictsAbove = {
+            "SubmissionError": 0,
+            "CantBeJudged": 0,
+            "InQueue": 0,
+            "CompileError": 0,
+            "RestrictedFunction": 0,
+            "RuntimeError": 0,
+            "OutputLimit": 0,
+            "TimeLimit": 0,
+            "MemoryLimit": 0,
+            "WrongAnswer": 0,
+            "PresentationError": 0,
+            "Accepted": 0
+        };
+        var uvaVerdictsBelow = {
+            "SubmissionError": 0,
+            "CantBeJudged": 0,
+            "InQueue": 0,
+            "CompileError": 0,
+            "RestrictedFunction": 0,
+            "RuntimeError": 0,
+            "OutputLimit": 0,
+            "TimeLimit": 0,
+            "MemoryLimit": 0,
+            "WrongAnswer": 0,
+            "PresentationError": 0,
+            "Accepted": 0
+        };
+        var rankingInfo = {
+            "rankingOfQueried": 0,
+            "rankingOfAboveOfQueried": 0,
+            "rankingOfBelowOfQueried": 0
+        };
+        
+        
+        var uvaLanguages = {
+            "ANSI_C": 0,
+            "Java": 0,
+            "C++": 0,
+            "Pascal": 0,
+            "C++11": 0,
+            "Python": 0
+        };
+        var uvaSubmissionRank = {};
+        var maxKeySubmissionRank = 0;
+        var minKeySubmissionRank = 0;
+        
+        var regressionDataArray = [];
+        var uhDIVRegression;
+        var uhDivRegressionLoader;
+        
+        // GitHub initiative
+        var requestToGH1;
+        var requestToGH2;
+        var requestToGH3;
+        
+        var gitHubApiURL = "https://api.github.com/users/";
+        var githubUsername = devModel.workingProfile.githubUsername;
+        var gitHubShortProfile = {};
+        var languagesOfRepositories = {};
+        var optimizedLanguages = {};
+        var pieChartGitHub;
+        
+        
+        <!-- global variable, color array ends  -->
+        
         $(document).ready(function() {
             
+             Chart.defaults.global.defaultFontColor = "#fff";
+                Chart.defaults.global.defaultFontFamily = "'Quicksand'";
+                Chart.defaults.global.defaultFontSize = 16;
+                Chart.defaults.global.animation.duration = 1500;
+                
+                var gitDIV = $("#GithubResume");
+                
+                try {
+                  if (githubUsername != null) {
+                                          requestToGH1 = $.get(gitHubApiURL + githubUsername, function(userInformation, userStatus) {
+                                              if (userStatus === "success") {
+                                                  gitHubShortProfile = userInformation;
+                  
+                                                  // Card Initiator
+                                                  $("#_githubAvatar").attr("src", gitHubShortProfile.avatar_url);
+                                                  $("#_githubDevName").text(gitHubShortProfile.name);
+                                                  if (gitHubShortProfile.location === null || gitHubShortProfile.location === "") {
+                                                      $("#_githubDevLocation").text("CodeStaGram");
+                                                  } else {
+                                                      $("#_githubDevLocation").text(gitHubShortProfile.location);
+                                                  }
+                  
+                                                  if (gitHubShortProfile.bio === null || gitHubShortProfile.bio === "") {
+                                                      $("#_githubDevBio").text("Hey, there. I am focusing on coding </>");
+                                                  } else {
+                                                      $("#_githubDevBio").text(gitHubShortProfile.bio);
+                                                  }
+                  
+                                                  $('#_githubDevFollowers').text(gitHubShortProfile.followers);
+                                                  $('#_githubDevFollowing').text(gitHubShortProfile.following);
+                                                  $("#_gitHubDevURL").attr("href", gitHubShortProfile.html_url);
+                                                  if (gitHubShortProfile.blog === null || gitHubShortProfile.blog === "") {
+                                                      $("#_gitHubDevPortfolioLink").attr("href", "");
+                                                  } else {
+                                                      $("#_gitHubDevPortfolioLink").attr("href", gitHubShortProfile.blog);
+                                                  }
+                  
+                                                  $('#_githubDevPublicRepos').text(gitHubShortProfile.public_repos);
+                                                  $('#_githubDevPublicGists').text(gitHubShortProfile.public_gists);
+                  
+                                                  $('#_githubDevAccCreated').text(days_between(new Date(gitHubShortProfile.created_at), new Date()) + ' Days ago');
+                                                  $('#_githubDevLastActive').text(days_between(new Date(gitHubShortProfile.updated_at), new Date()) + ' Days ago');
+                  
+                                                  // Card Initiator End
+                  
+                                                  // Repository Findings
+                                                  requestToGH2 = $.get(gitHubApiURL + githubUsername + '/repos?page=1&per_page=10&sort=updated', function(repositories, status) {
+                                                      if (repositories.length < 1) {
+                                                          showUserDefinedToast('Sorry, No Repositories on GitHub', "pink darken-2 rounded");
+                                                      } else {
+                                                          _initiateLanguages(repositories);
+                                                      }
+                                                  });
+                                                  gitDIV.show();
+                                              } else {
+                                                  showUserDefinedToast("Failed to retrieve GitHub data", "red darken-1 rounded");
+                                              }
+                                          });
+                                      } else {
+                                          
+                                          gitDIV.hide();
+                                          showUserDefinedToast("GitHub is Private", "amber darken-2 rounded");
+                                      }
+                }catch (e) {
+                  showErrorToast("Invalid Username");
+                              intLoader.hide();
+                }
+
+                
+                
         });
+        
+        
+        function _initiateLanguages(repositories) {
+            for (var i = 0; i < repositories.length; i++) {
+                requestToGH3 = $.get(repositories[i].languages_url, function(languages, status) {
+                    var tempKeys = Object.keys(languages);
+        
+                    for (var k = 0; k < tempKeys.length; k++) {
+                        if (languagesOfRepositories[tempKeys[k]] === undefined) {
+                            languagesOfRepositories[tempKeys[k]] = languages[tempKeys[k]];
+                        } else {
+                            languagesOfRepositories[tempKeys[k]] += languages[tempKeys[k]];
+                        }
+        
+                        if (k === tempKeys.length - 1) {
+                            if (pieChartGitHub != null) {
+                                pieChartGitHub.destroy();
+                            }
+                            _demonstrateLanguagesGitHub($('#languages_github'), 'doughnut', '');
+                        }
+                    }
+                });
+            }
+        }
+        
+        
+        function showUserDefinedToast(message, style) {
+            M.toast({
+                html: message,
+                classes: style
+            });
+        }
+        
+        
+function showErrorToast(message) {
+    M.toast({
+        html: message,
+        classes: 'red darken-1 rounded'
+    });
+}
+        
+
     </script>
 </environment>
