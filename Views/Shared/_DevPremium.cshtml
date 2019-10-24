@@ -113,6 +113,12 @@
         
         $(document).ready(function() {
         
+            <!--  Cache clear functions   -->
+            _initClearDumpGH();
+            _initClearDumpValuesCF();
+            _initClearDumpValuesUVA();
+            
+            <!--  Chart global style   -->
             Chart.defaults.global.defaultFontColor = "#fff";
             Chart.defaults.global.defaultFontFamily = "'Quicksand'";
             Chart.defaults.global.defaultFontSize = 16;
@@ -609,6 +615,90 @@ function CodeForcesEffortSummary() {
         <!--  Codeforces functions ends  -->
         
         
+        <!--  Functions to clear cache   -->
+        function _initClearDumpValuesCF() {
+            cf_problems_attempt_solved = {};
+            cf_verdicts = {};
+            cf_languages = {};
+            cf_tags = {};
+            cf_attempt_level_quality = {};
+            cf_attempt_rating_quality = {};
+        }
+        
+        function _initClearDumpValuesUVA() {
+            uvaAllSubmissions = [];
+            uvaVerdicts = {
+                "SubmissionError": 0,
+                "CantBeJudged": 0,
+                "InQueue": 0,
+                "CompileError": 0,
+                "RestrictedFunction": 0,
+                "RuntimeError": 0,
+                "OutputLimit": 0,
+                "TimeLimit": 0,
+                "MemoryLimit": 0,
+                "WrongAnswer": 0,
+                "PresentationError": 0,
+                "Accepted": 0
+            };
+            uvaVerdictsAbove = {
+                "SubmissionError": 0,
+                "CantBeJudged": 0,
+                "InQueue": 0,
+                "CompileError": 0,
+                "RestrictedFunction": 0,
+                "RuntimeError": 0,
+                "OutputLimit": 0,
+                "TimeLimit": 0,
+                "MemoryLimit": 0,
+                "WrongAnswer": 0,
+                "PresentationError": 0,
+                "Accepted": 0
+            };
+            uvaVerdictsBelow = {
+                "SubmissionError": 0,
+                "CantBeJudged": 0,
+                "InQueue": 0,
+                "CompileError": 0,
+                "RestrictedFunction": 0,
+                "RuntimeError": 0,
+                "OutputLimit": 0,
+                "TimeLimit": 0,
+                "MemoryLimit": 0,
+                "WrongAnswer": 0,
+                "PresentationError": 0,
+                "Accepted": 0
+            };
+            rankingInfo = {
+                "rankingOfQueried": 0,
+                "rankingOfAboveOfQueried": 0,
+                "rankingOfBelowOfQueried": 0
+            };
+            uvaLanguages = {
+                "ANSI_C": 0,
+                "Java": 0,
+                "C++": 0,
+                "Pascal": 0,
+                "C++11": 0,
+                "Python": 0
+            };
+            uvaSubmissionRank = {};
+            maxKeySubmissionRank = 0;
+            minKeySubmissionRank = 0;
+            regressionDataArray = [];
+        }
+        
+        function _initClearDumpGH() {
+            gitHubApiURL = "https://api.github.com/users/";
+            githubUsername = "";
+            gitHubShortProfile = {};
+            languagesOfRepositories = {};
+            optimizedLanguages = {};
+        }
+       
+         <!--  Functions to clear cache ends  -->
+        
+        <!--  Functions to show toast messages   -->
         function showUserDefinedToast(message, style) {
             M.toast({
                 html: message,
@@ -624,5 +714,6 @@ function CodeForcesEffortSummary() {
             });
         }    
 
+        <!--  Functions to show toast messages ends   -->
     </script>
 </environment>
