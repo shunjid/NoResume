@@ -270,7 +270,7 @@ Primary use:	CV/Resume, Portfolio, Perosnal Website
     overflow: hidden;
   }
   .section {
-    padding-left: 32px !important;
+    padding-left: 11px !important;
     text-align: left;
   }
   .section .fa {
@@ -281,7 +281,7 @@ Primary use:	CV/Resume, Portfolio, Perosnal Website
   .section .section-wrapper {
     background-color: #ffffff;
     overflow: hidden;
-    margin-bottom: 24px;
+    margin-bottom: 10px;
     padding-bottom: 24px !important;
   }
   .section .section-wrapper .section-icon {
@@ -325,199 +325,8 @@ Primary use:	CV/Resume, Portfolio, Perosnal Website
     margin-top: 0px;
     margin-bottom: 25px;
   }
-  /* style for
   
-  *****  Interests  *****
   
-  */
-  .interests ul {
-    padding-left: 0px;
-  }
-  .interests ul li {
-    list-style-type: none;
-    display: inline-block;
-    width: 19%;
-  }
-  .interests ul li .fa {
-    color: #5da4d9;
-    text-align: left;
-  }
-  /* style for
-  
-  ***** Portfolio website  *****
-  
-  */
-  .website {
-    padding-top: 40px !important;
-    padding: 20px;
-  }
-  .website span {
-    font-size: 12pt;
-    line-height: 18pt;
-  }
-  .website span a {
-    color: #5da4d9;
-    word-wrap: break-word;
-  }
-  /* style for
-  
-  ***** blog  *****
-  
-  */
-  .post-title {
-    margin-top: -5px;
-    color: white;
-    padding: 20px 30px;
-  }
-  .post-title h2 {
-    margin: 0px;
-    font-size: 14pt;
-    line-height: 24pt;
-  }
-  .post-title span {
-    opacity: 0.7;
-  }
-  .blog-post .thumbnail img {
-    width: 100%;
-    margin-bottom: -2px;
-  }
-  .blog-post:nth-child(odd) {
-    padding-left: 0px !important;
-  }
-  .blog-post:nth-child(even) {
-    padding-right: 0px !important;
-  }
-  .blog-post:last-child {
-    padding-right: 0px !important;
-  }
-  #blog-post-1 {
-    background-color: #e95855;
-  }
-  #blog-post-2 {
-    background-color: #707281;
-  }
-  #blog-post-3 {
-    background-color: #564d52;
-  }
-  #blog-post-4 {
-    background-color: #47bac9;
-  }
-  #blog-post-5 {
-    background-color: #68c02e;
-  }
-  .post-details {
-    background-color: #ffffff;
-    padding: 20px 30px;
-    margin-bottom: 24px;
-  }
-  .featured-img {
-    padding-right: 0px !important;
-  }
-  .caption {
-    padding-left: 0px !important;
-  }
-  #caption .post-details {
-    margin-bottom: 0px;
-  }
-  .comment .section-wrapper {
-    padding-bottom: 0px !important;
-    margin-bottom: 0px !important;
-  }
-  .comment .comment-img {
-    padding: 10px;
-  }
-  .comment .comment-details {
-    padding: 10px;
-  }
-  .comment .comment-details h4 {
-    margin: 0px;
-  }
-  .comment .comment-details span {
-    font-size: 9pt;
-    line-height: 17pt;
-  }
-  .comment-form {
-    padding-bottom: 0px;
-    background-color: #fff;
-    padding: 20px 50px !important;
-  }
-  /* style for
-      **************
-     * Cover latter * 
-   
-  */
-  .cover-latter {
-    padding: 30px;
-    margin-right: 5px;
-    margin-bottom: 24px;
-    background-color: white;
-  }
-  .cover-latter strong {
-    font-weight: 400;
-  }
-  .cover-latter p:last-child {
-    margin: 30px 0px;
-  }
-  .cover-latter p h2 {
-    margin-bottom: 0px;
-    font-size: 12pt;
-    line-height: 20pt;
-  }
-  .cover-latter .cover-title span {
-    font-size: 12pt;
-    line-height: 20pt;
-    font-weight: 500;
-  }
-  .cover-latter .cover-title h2 {
-    font-size: 12pt;
-    line-height: 20pt;
-    margin-top: 20px;
-  }
-  .cover-latter .cover-title h4 {
-    font-weight: 500;
-  }
-  .cover-latter .cover-title p {
-    margin-top: 0px;
-  }
-  .cover-latter .signature h4 {
-    margin: 0px;
-  }
-  /* ***** Contact  *****
-  *
-  */
-  .section .g-map {
-    padding-bottom: 0px !important;
-  }
-  .section .g-map #map {
-    width: 100%;
-    height: 350px;
-  }
-  input[type=text]:focus:not([readonly]),
-  input[type=password]:focus:not([readonly]),
-  input[type=email]:focus:not([readonly]),
-  input[type=url]:focus:not([readonly]),
-  input[type=time]:focus:not([readonly]),
-  input[type=date]:focus:not([readonly]),
-  input[type=datetime-local]:focus:not([readonly]),
-  input[type=tel]:focus:not([readonly]),
-  input[type=number]:focus:not([readonly]),
-  input[type=search]:focus:not([readonly]),
-  textarea.materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #5da4d9;
-  }
-  input[type=text]:focus:not([readonly]) + label,
-  input[type=password]:focus:not([readonly]) + label,
-  input[type=email]:focus:not([readonly]) + label,
-  input[type=url]:focus:not([readonly]) + label,
-  input[type=time]:focus:not([readonly]) + label,
-  input[type=date]:focus:not([readonly]) + label,
-  input[type=datetime-local]:focus:not([readonly]) + label,
-  input[type=tel]:focus:not([readonly]) + label,
-  input[type=number]:focus:not([readonly]) + label,
-  input[type=search]:focus:not([readonly]) + label,
-  textarea.materialize-textarea:focus:not([readonly]) + label {
-    color: #5da4d9;
-  }
   .waves-me:focus {
     background-color: #5da4d9;
     color: #fff;
