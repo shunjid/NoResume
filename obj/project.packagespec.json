@@ -1,13 +1,13 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/home/shunjid/Documents/API-Hackathon/NoResume/NoResume.csproj",
+    "projectUniqueName": "E:\\no-resume\\NoResume.csproj",
     "projectName": "NoResume",
-    "projectPath": "/home/shunjid/Documents/API-Hackathon/NoResume/NoResume.csproj",
-    "outputPath": "/home/shunjid/Documents/API-Hackathon/NoResume/obj/",
+    "projectPath": "E:\\no-resume\\NoResume.csproj",
+    "outputPath": "E:\\no-resume\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
-      "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
     ],
     "originalTargetFrameworks": [
       "netcoreapp2.2"
