@@ -42,3 +42,4 @@ E:\NoResume\obj\Debug\netcoreapp2.2\NoResume.dll
 E:\NoResume\obj\Debug\netcoreapp2.2\NoResume.pdb
 E:\NoResume\obj\Debug\netcoreapp2.2\NoResume.csproj.CopyComplete
 E:\NoResume\bin\Debug\netcoreapp2.2\NoResume.db
+E:\NoResume\obj\Debug\netcoreapp2.2\Razor\Views\Dev\NotFound404.g.cshtml.cs

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NoResume.Models;
+using System.Linq;
 
 namespace NoResume.Controllers
 {
@@ -30,12 +31,27 @@ namespace NoResume.Controllers
                     WorkingProfile = await _context.WorkingProfiles.FindAsync(developerId)
                 };
             
-                return View(dev);
+                var subscriptions = _context.Subscriptions.FirstOrDefault(s => s.DevId == developerId);
+                if(subscriptions == null)
+                {
+                    return View("NotFound404");
+                }
+                else
+                {
+                    return View(dev);
+                }
             }
             catch (Exception e)
             {
                 return NotFound();
             }
         }
+
+        public IActionResult NotFound404()
+        {
+            return View();
+        }
+
+
     }
 }
