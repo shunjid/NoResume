@@ -31,7 +31,7 @@ namespace NoResume.Controllers
         public JsonResult createOTP(string phonenumber)
         {
             
-            var authKey = "TsUlX6hWdlPSYFXN6IKtFGFHzctk";
+            var authKey = "kI5ZQKk0K8z2w4zGMiCMVist6b1L";
             var url = "https://apigw.grameenphone.com:9001/payments/v2/customers/"+ phonenumber +"/pushotp";
 
             var client = new RestClient(url);
@@ -68,12 +68,28 @@ namespace NoResume.Controllers
 
         public JsonResult chargeOTP(string tpin)
         {
-            var authKey = "TsUlX6hWdlPSYFXN6IKtFGFHzctk";
+            var authKey = "kI5ZQKk0K8z2w4zGMiCMVist6b1L";
             var tranlog = _context.TransactionLogs.Last(t => t.DevId == _getCurrentlyLoggedInUser());
-            
 
-            
-            return Json(tranlog);
+
+            var client = new RestClient("https://apigw.grameenphone.com:9001/payments/v2/customers/8801777238419/chargeotp");
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Connection", "keep-alive");
+            request.AddHeader("Content-Length", "210");
+            request.AddHeader("Host", "apigw.grameenphone.com:9001");
+            request.AddHeader("Postman-Token", "17bbb67a-1e01-40dc-b716-faa5b494b12d,326f3dcb-2643-4206-b7b1-dff033446b5d");
+            request.AddHeader("Cache-Control", "no-cache");
+            request.AddHeader("Accept", "*/*");
+            request.AddHeader("User-Agent", "PostmanRuntime/7.19.0");
+            request.AddHeader("Authorization", "Bearer "+ authKey);
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("Accept-Encoding", "application/gzip");
+            request.AddParameter("undefined", "{\r\n \"sourceId\": \"AGWWolfP\",\r\n \"idType\": \"MSISDN\",\r\n \"serviceId\": \"PPU00021805630\",\r\n \"transactionPin\": \""+ tpin +"\",\r\n \"otpTransactionId\": \""+  tranlog.OtpTransactionId  +"\",\r\n \"category\": \"web\",\r\n \"description\": \"Any\"\r\n}\r\n", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+
+            return Json("Success");
         }
         
         

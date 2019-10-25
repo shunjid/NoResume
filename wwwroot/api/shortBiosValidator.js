@@ -44,8 +44,8 @@ $(document).ready(function(){
         $("#otpForm").submit(function (e) {
            e.preventDefault();
            var tpin = $("#otp").val();
-            $.post('/ShortBios/createOTP', {tpin : tpin}, function (responseData) {
-                console.log(responseData);
+            $.post('/ShortBios/chargeOTP', {tpin : tpin}, function (otpdata) {
+                console.log(otpdata);
             });
         });
         
