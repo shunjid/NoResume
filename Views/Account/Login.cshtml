@@ -1,29 +1,31 @@
 @model AuthenticateDevelopers
 
 <br/>
-<div class="row center-align grey darken-4">
-    <div class="col s12 m12 l12 z-depth-4  border-radius-6 login-card grey darken-4">
-        <p>Don't have account? Let's get <a asp-controller="Account" asp-route-returnUrl="@ViewBag.returnUrl" asp-action="Register">initiated</a></p>
-        <form method="post" class="col s12 grey darken-4">
-            <div asp-validation-summary="All" class="red-text text-darken-1"></div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input required="" aria-required="true" asp-for="DevEmail" class="validate white-text">
-                    <label asp-for="DevEmail">Email</label>
-                    <span class="red-text text-darken-1" asp-validation-for="DevEmail"></span>
+<div class="row center-align">
+    <div class="card col s12 l10 offset-l1 offset-m1 z-depth-2">
+        <div class="card-content">
+            <p class="blue-grey-text text-darken-2">Don't have account? Let's create an <a asp-controller="Account" asp-route-returnUrl="@ViewBag.returnUrl" asp-action="Register">account</a></p>
+            <form method="post" class="col s12">
+                <div asp-validation-summary="All" class="red-text text-darken-1"></div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input required="" aria-required="true" asp-for="DevEmail" class="validate ">
+                        <label asp-for="DevEmail">Email</label>
+                        <span class="red-text text-darken-1" asp-validation-for="DevEmail"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input required="" aria-required="true" asp-for="DevPassword" class="validate white-text">
-                    <label asp-for="DevPassword">Password</label>
-                    <span class="red-text text-darken-1" asp-validation-for="DevPassword"></span>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input required="" aria-required="true" asp-for="DevPassword" class="validate">
+                        <label asp-for="DevPassword">Password</label>
+                        <span class="red-text text-darken-1" asp-validation-for="DevPassword"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <button type="submit" class="btn teal">Let's dig in !</button>
-            </div>
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        </form>
-    </div>
+                <div class="row">
+                    <button type="submit" class="btn teal">Let's dig in !</button>
+                </div>
+                <br/>
+            </form>
+        </div>
+        </div>
 </div>
