@@ -406,7 +406,9 @@ Work experiences
             <div class="card">
                 <div class="card-content">
                     <div class="center-align">
-                        <h4 class="indigo-text text-darken-2"><b>Developers Summary Table</b></h4>
+                        <h4 class="indigo-text text-darken-2">
+                            <b>Developers Summary Table</b>
+                        </h4>
                     </div>
                     <table class="centered responsive-table blue darken-4">
                         <thead>
@@ -448,67 +450,73 @@ Work experiences
 
 <!--  UVA html   -->
 
+
 <div id="UHuntResume" class="row">
-    <h2 class="blue-grey-text text-darken-4 center-align">
+    <h2 class="blue-grey-text text-darken-4 center-align header-border">
         <b>UVA Profile Summary</b>
-    </h2>
+    </h2><br/>
     <div class="row" id="gradient-Analytics">
         <div class="col s12">
-                    <div class="col s12 l4">
-                        <div class="card card-1 ucard">
-                            <h3 class="indigo-text text-darken-4">Total Submission</h3>
-                            <h4 class="count blue-grey-text text-darken-4" id="_uvaTotalSubmissions"></h4>
-                        </div>
-                    </div>
-                    <div class="col s12 l4">
-                        <div class="card card-2 ucard">
-                            <h3 class="green-text text-darken-3">Accepted</h3>
-                            <h4 class="count blue-grey-text text-darken-4" id="_uvaAcceptedSubmissionNumber"></h4>
-                        </div>
-                    </div>
-                    <div class="col s12 l4">
-                        <div class="card card-3 ucard">
-                            <h3 class="red-text text-darken-3">Wrong Submission</h3>
-                            <h4 class="count blue-grey-text text-darken-4" id="_uvaTotalWrongSubmissions"></h4>
-                        </div>
-                    </div>
+            <div class="col s12 l4">
+                <div class="card card-1 ucard">
+                    <h3 class="indigo-text text-darken-4">Total Submission</h3>
+                    <h4 class="count blue-grey-text text-darken-4" id="_uvaTotalSubmissions"></h4>
                 </div>
-                     
-            
+            </div>
+            <div class="col s12 l4">
+                <div class="card card-2 ucard">
+                    <h3 class="green-text text-darken-3">Accepted</h3>
+                    <h4 class="count blue-grey-text text-darken-4" id="_uvaAcceptedSubmissionNumber"></h4>
+                </div>
+            </div>
+            <div class="col s12 l4">
+                <div class="card card-3 ucard">
+                    <h3 class="red-text text-darken-3">Wrong Submission</h3>
+                    <h4 class="count blue-grey-text text-darken-4" id="_uvaTotalWrongSubmissions"></h4>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="_regressionAnalytics" class="row">
-        <p class="center-align">Regression DataSet</p>
-        <div class="col s12 l12 m12 container">
-            <table id="_regressionSetTable" class="responsive-table grey darken-3">
-                <thead>
-                <tr class="purple darken-2 white-text">
-                    <th>Name</th>
-                    <th>Ranking (Y)</th>
-                    <th>SE (X<sub>1</sub>)</th>
-                    <th>CBJ (X<sub>2</sub>)</th>
-                    <th>Queue (X<sub>3</sub>)</th>
-                    <th>CE (X<sub>4</sub>)</th>
-                    <th>Restricted (X<sub>5</sub>)</th>
-                    <th>RE (X<sub>6</sub>)</th>
-                    <th>OL (X<sub>7</sub>)</th>
-                    <th>TL (X<sub>8</sub>)</th>
-                    <th>ML (X<sub>9</sub>)</th>
-                    <th>Wrong (X<sub>10</sub>)</th>
-                    <th>PE (X<sub>11</sub>)</th>
-                    <th>Accepted (X<sub>12</sub>)</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr id="_rankAboveRow"></tr>
-                <tr id="_subjectRow"></tr>
-                <tr id="_rankBelowRow"></tr>
-                </tbody>
-            </table>
+        <div class="card">
+            <div class="card-content">
+
+                <h4 class="indigo-text text-darken-2 center-align">
+                    <b>Regression Table</b>
+                </h4>
+                <div class="col s12 l12 m12 container">
+                    <table id="_regressionSetTable" class="responsive-table grey lighten-3">
+                        <thead>
+                        <tr class="purple darken-2 white-text">
+                            <th>Name</th>
+                            <th>Ranking (Y)</th>
+                            <th>SE (X<sub>1</sub>)</th>
+                            <th>CBJ (X<sub>2</sub>)</th>
+                            <th>Queue (X<sub>3</sub>)</th>
+                            <th>CE (X<sub>4</sub>)</th>
+                            <th>Restricted (X<sub>5</sub>)</th>
+                            <th>RE (X<sub>6</sub>)</th>
+                            <th>OL (X<sub>7</sub>)</th>
+                            <th>TL (X<sub>8</sub>)</th>
+                            <th>ML (X<sub>9</sub>)</th>
+                            <th>Wrong (X<sub>10</sub>)</th>
+                            <th>PE (X<sub>11</sub>)</th>
+                            <th>Accepted (X<sub>12</sub>)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr id="_rankAboveRow"></tr>
+                        <tr id="_subjectRow"></tr>
+                        <tr id="_rankBelowRow"></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br/>
+                <br/>
+                <h6 class="center-align"><b class="green-text">Note :</b> Ranking model implementation based on Linear Regression is about to arrive soon in Version 2.0 </h6>
+            </div>
         </div>
-        <br/>
-        <br/>
-        <p class="center-align"><b class="green-text">Note :</b> Ranking model implementation based on Linear Regression is about to arrive soon in Version 2.0 </p>
     </div>
 </div>
 
