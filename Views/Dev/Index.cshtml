@@ -406,36 +406,44 @@ Work experiences
     </div>
     <div class="row">
         <div class="col s12">
-            <table class="centered responsive-table blue darken-4">
-                <thead>
-                <tr class="gradient-45deg-blue-blue darken-4 white-text">
-                    <th>Parameter</th>
-                    <th>Value</th>
-                </tr>
-                </thead>
-                <tbody class="indigo lighten-5 black-text">
-                <tr>
-                    <td>Problems Tried</td>
-                    <td id="DevTriedProblems"></td>
-                </tr>
-                <tr>
-                    <td>Solved</td>
-                    <td id="DevSolvedProblems"></td>
-                </tr>
-                <tr>
-                    <td>Maximum Attempt</td>
-                    <td id="DevMaxAttemptedProblems"></td>
-                </tr>
-                <tr>
-                    <td>Max Solved</td>
-                    <td id="DevMaxAcceptedProblems"></td>
-                </tr>
-                <tr>
-                    <td>Accepted at 1st try</td>
-                    <td id="DevAcceptedAtFirstTry"></td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="card">
+                <div class="card-content">
+                    <div class="center-align">
+                        <h4 class="indigo-text text-darken-2"><b>Developers Summary Table</b></h4>
+                    </div>
+                    <table class="centered responsive-table blue darken-4">
+                        <thead>
+                        <tr class="gradient-45deg-blue-blue darken-4 white-text">
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                        </thead>
+                        <tbody class="indigo lighten-5 black-text">
+                        <tr>
+                            <td>Problems Tried</td>
+                            <td id="DevTriedProblems"></td>
+                        </tr>
+                        <tr>
+                            <td>Solved</td>
+                            <td id="DevSolvedProblems"></td>
+                        </tr>
+                        <tr>
+                            <td>Maximum Attempt</td>
+                            <td id="DevMaxAttemptedProblems"></td>
+                        </tr>
+                        <tr>
+                            <td>Max Solved</td>
+                            <td id="DevMaxAcceptedProblems"></td>
+                        </tr>
+                        <tr>
+                            <td>Accepted at 1st try</td>
+                            <td id="DevAcceptedAtFirstTry"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
@@ -445,28 +453,32 @@ Work experiences
 <!--  UVA html   -->
 
 <div id="UHuntResume" class="row">
-    <h3 class="white-text">UVA Profile Summary</h3>
+    <h2 class="blue-grey-text text-darken-4 center-align">
+        <b>UVA Profile Summary</b>
+    </h2>
     <div class="row" id="gradient-Analytics">
         <div class="col s12">
-            <div class="col s12 l4">
-                <div class="card card-1 ucard">
-                    <h3>Total Submission</h3>
-                    <h4 class="count blue-grey-text text-darken-4" id="_uvaTotalSubmissions"></h4>
+                    <div class="col s12 l4">
+                        <div class="card card-1 ucard">
+                            <h3 class="indigo-text text-darken-4">Total Submission</h3>
+                            <h4 class="count blue-grey-text text-darken-4" id="_uvaTotalSubmissions"></h4>
+                        </div>
+                    </div>
+                    <div class="col s12 l4">
+                        <div class="card card-2 ucard">
+                            <h3 class="green-text text-darken-3">Accepted</h3>
+                            <h4 class="count blue-grey-text text-darken-4" id="_uvaAcceptedSubmissionNumber"></h4>
+                        </div>
+                    </div>
+                    <div class="col s12 l4">
+                        <div class="card card-3 ucard">
+                            <h3 class="red-text text-darken-3">Wrong Submission</h3>
+                            <h4 class="count blue-grey-text text-darken-4" id="_uvaTotalWrongSubmissions"></h4>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col s12 l4">
-                <div class="card card-2 ucard">
-                    <h3>Accepted</h3>
-                    <h4 class="count blue-grey-text text-darken-4" id="_uvaAcceptedSubmissionNumber"></h4>
-                </div>
-            </div>
-            <div class="col s12 l4">
-                <div class="card card-3 ucard">
-                    <h3>Wrong Submission</h3>
-                    <h4 class="count blue-grey-text text-darken-4" id="_uvaTotalWrongSubmissions"></h4>
-                </div>
-            </div>
-        </div>
+                     
+            
     </div>
 
     <div id="_regressionAnalytics" class="row">
