@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    $('.modal').modal();
+    $('.modal').modal('open');
+    
     var postLoader = $('#postLoader');
     postLoader.hide();
 

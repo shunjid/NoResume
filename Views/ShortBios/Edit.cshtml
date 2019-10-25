@@ -43,13 +43,33 @@
             <div class="col s12">
                 <form id="subscriptionForm">
                     <div class="row">
-                         <div class="input-field col s12">
-                                  <input name="PhoneNumber" id="PhoneNumber" type="number" class="validate" value="@Model.DeveloperPhoneNumber">
-                                  <label for="PhoneNumber">Phone Number</label>
-                                </div>
+                        <div class="input-field col s12">
+                            <input name="PhoneNumber" id="PhoneNumber" type="number" class="validate" value="@Model.DeveloperPhoneNumber">
+                            <label for="PhoneNumber">Phone Number</label>
+                        </div>
                         <div class="center-align">
                             <input type="submit" value="Pay with GP" class="btn blue darken-3"/>
                         </div>
+                        <!--  Modal html  -->
+                        <div id="modal1" class="modal">
+                            <div class="modal-content">
+                                <form class="col s12" id="otpmodal">
+                                    <div class="row">
+                                        <div class="center-align">
+                                            <div class="input-field col s12">
+                                                <input name="otp" id="otp" type="number" class="validate">
+                                                <label for="otp">OTP code</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="center-align">
+                                        <input type="submit" value="Pay with GP" class="btn blue darken-3"/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
                     </div>
                 </form>
             </div>
