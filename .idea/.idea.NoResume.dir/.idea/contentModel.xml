@@ -157,6 +157,7 @@
         </e>
         <e p="premiumtemplate" t="Include">
           <e p="css" t="Include">
+            <e p="card.css" t="Include" />
             <e p="chart.css" t="Include" />
             <e p="colors" t="Include">
               <e p="green.css" t="Include" />
