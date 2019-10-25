@@ -1,3 +1,4 @@
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace NoResume.Controllers
         public JsonResult createOTP(string phonenumber)
         {
             
-            var authKey = "nSWSquij5qelTIFEiBRv8I1Kem5O";
+            var authKey = "TsUlX6hWdlPSYFXN6IKtFGFHzctk";
             var url = "https://apigw.grameenphone.com:9001/payments/v2/customers/"+ phonenumber +"/pushotp";
 
             var client = new RestClient(url);
@@ -60,15 +61,19 @@ namespace NoResume.Controllers
             };
             _context.Add(tranlog);
             _context.SaveChanges();
+            
             return Json(jsonAfterOtp);
         }
 
 
-        public JsonResult chargeOTP()
+        public JsonResult chargeOTP(string tpin)
         {
-            var authKey = "63quBZlgqkccpGaZSMAV3V9laOzm";
+            var authKey = "TsUlX6hWdlPSYFXN6IKtFGFHzctk";
+            var tranlog = _context.TransactionLogs.Last(t => t.DevId == _getCurrentlyLoggedInUser());
             
-            return null;
+
+            
+            return Json(tranlog);
         }
         
         
@@ -87,20 +92,31 @@ namespace NoResume.Controllers
             }
             
             var shortBio = await _context.ShortBios.FindAsync(id);
-            var subscription = await _context.Subscriptions.FindAsync(id);
+            //var subscription = await _context.Subscriptions.FindAsync(id);
+
             
             TextInfo caseTitle = new CultureInfo("en-US",false).TextInfo;
             ViewBag.loggedInUserName = caseTitle.ToTitleCase(_userManager.GetUserName(HttpContext.User));
             ViewBag.loggedInUserId = _userManager.GetUserId(HttpContext.User);
-            if (subscription != null)
-            {
+            // if (subscription != null)
+            // {
+            //     ViewBag.subscriptionStatus = "Yes";
+            // }
+            // else
+            // {
+            //     ViewBag.subscriptionStatus = "No";
+            // }
+            //ViewBag.subscriptionStatus = "No";
+
+            try{
+
+                var subscription = await _context.Subscriptions.FirstAsync(t => t.DevId == id);
                 ViewBag.subscriptionStatus = "Yes";
-            }
-            else
-            {
+
+            }catch(Exception e){
+
                 ViewBag.subscriptionStatus = "No";
             }
-            
             
             if (shortBio == null)
             {

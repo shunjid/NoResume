@@ -37,13 +37,16 @@ $(document).ready(function(){
             //console.log(phonenumber);
             $('.modal').modal('open');
         }).done(function (xhr, status){
-           // console.log(xhr);
+             console.log(xhr);
         });
     });
         
         $("#otpForm").submit(function (e) {
            e.preventDefault();
-           
+           var tpin = $("#otp").val();
+            $.post('/ShortBios/createOTP', {tpin : tpin}, function (responseData) {
+                console.log(responseData);
+            });
         });
         
 });

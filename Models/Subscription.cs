@@ -4,7 +4,8 @@ namespace NoResume.Models
 {
     public class Subscription
     {
-	    [Key]
+	    [Key] 
+	    public int SubId { get; set; }
         public string DevId { get; set; }
         public string ServeReferenceCode { get; set; }
         public float AmountPaid { get; set; }

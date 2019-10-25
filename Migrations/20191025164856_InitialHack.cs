@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NoResume.Migrations
 {
-    public partial class InitialSubscription : Migration
+    public partial class InitialHack : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -114,7 +114,9 @@ namespace NoResume.Migrations
                 name: "Subscriptions",
                 columns: table => new
                 {
-                    DevId = table.Column<string>(nullable: false),
+                    SubId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    DevId = table.Column<string>(nullable: true),
                     ServeReferenceCode = table.Column<string>(nullable: true),
                     AmountPaid = table.Column<float>(nullable: false),
                     TransactionId = table.Column<string>(nullable: true),
@@ -122,21 +124,23 @@ namespace NoResume.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Subscriptions", x => x.DevId);
+                    table.PrimaryKey("PK_Subscriptions", x => x.SubId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "TransactionLogs",
                 columns: table => new
                 {
-                    DevId = table.Column<string>(nullable: false),
+                    TranId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    DevId = table.Column<string>(nullable: true),
                     OtpTransactionId = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
                     OtpTimeStamp = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TransactionLogs", x => x.DevId);
+                    table.PrimaryKey("PK_TransactionLogs", x => x.TranId);
                 });
 
             migrationBuilder.CreateTable(

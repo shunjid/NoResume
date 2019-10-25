@@ -9,8 +9,8 @@ using NoResume.Models;
 namespace NoResume.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191025120136_InitialSubscription")]
-    partial class InitialSubscription
+    [Migration("20191025164856_InitialHack")]
+    partial class InitialHack
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -264,10 +264,12 @@ namespace NoResume.Migrations
 
             modelBuilder.Entity("NoResume.Models.Subscription", b =>
                 {
-                    b.Property<string>("DevId")
+                    b.Property<int>("SubId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<float>("AmountPaid");
+
+                    b.Property<string>("DevId");
 
                     b.Property<string>("ServeReferenceCode");
 
@@ -275,15 +277,17 @@ namespace NoResume.Migrations
 
                     b.Property<string>("TransactionId");
 
-                    b.HasKey("DevId");
+                    b.HasKey("SubId");
 
                     b.ToTable("Subscriptions");
                 });
 
             modelBuilder.Entity("NoResume.Models.TransactionLog", b =>
                 {
-                    b.Property<string>("DevId")
+                    b.Property<int>("TranId")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("DevId");
 
                     b.Property<string>("OtpTimeStamp");
 
@@ -291,7 +295,7 @@ namespace NoResume.Migrations
 
                     b.Property<string>("PhoneNumber");
 
-                    b.HasKey("DevId");
+                    b.HasKey("TranId");
 
                     b.ToTable("TransactionLogs");
                 });
