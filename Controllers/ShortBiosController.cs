@@ -24,6 +24,11 @@ namespace NoResume.Controllers
         {
             return _userManager.GetUserId(HttpContext.User);
         }
+
+        public JsonResult createOTP(string phonenumber)
+        {
+            return Json(phonenumber);
+        }
         
         // GET: ShortBios/Edit/5
         [Authorize]

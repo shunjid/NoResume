@@ -24,4 +24,17 @@ $(document).ready(function(){
             postLoader.hide();
         });
     });
+
+    $("#subscriptionForm").submit(function(e){
+        e.preventDefault();
+        var phonenumber = $("#PhoneNumber").val();
+        $.post('/ShortBios/createOTP', {phonenumber : phonenumber}, function (responseData) {
+            console.log(responseData);
+            
+        });
+    });
+        
+        
+        
 });
+
