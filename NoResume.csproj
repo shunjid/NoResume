@@ -22,6 +22,7 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
         <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+        <PackageReference Include="RestSharp" Version="106.6.10" />
     </ItemGroup>
 
 

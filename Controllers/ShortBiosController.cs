@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 using NoResume.Models;
+using RestSharp;
 
 namespace NoResume.Controllers
 {
@@ -27,8 +29,51 @@ namespace NoResume.Controllers
 
         public JsonResult createOTP(string phonenumber)
         {
-            return Json(phonenumber);
+            
+            var authKey = "nSWSquij5qelTIFEiBRv8I1Kem5O";
+            var url = "https://apigw.grameenphone.com:9001/payments/v2/customers/"+ phonenumber +"/pushotp";
+
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Connection", "keep-alive");
+            request.AddHeader("Content-Length", "161");
+            request.AddHeader("Host", "apigw.grameenphone.com:9001");
+            request.AddHeader("Postman-Token", "b3b5fd9e-f0b0-4213-8dd7-e54c8c36f17a,4b591436-bac7-4297-8c8e-f5f1a7818bb3");
+            request.AddHeader("Cache-Control", "no-cache");
+            request.AddHeader("Accept", "*/*");
+            request.AddHeader("User-Agent", "PostmanRuntime/7.19.0");
+            request.AddHeader("Authorization", "Bearer "+authKey);
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("Accept-Encoding", "application/gzip");
+            request.AddParameter("undefined", "{\r\n \"sourceId\":\"AGWWolfP\",\r\n \"idType\":\"MSISDN\",\r\n \"amount\":\"1\",\r\n \"priceCode\":\"PPU00021805630191022841\",\r\n \"serviceId\":\"PPU00021805630\",\r\n \"description\":\"Any\"\r\n}", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            var jsonAfterOtp = JObject.Parse(response.Content);
+            var transactionId = jsonAfterOtp["data"]["otpTrasactionId"].ToString();            
+            
+            var tranlog = new TransactionLog
+            {
+                DevId = _getCurrentlyLoggedInUser(),
+                PhoneNumber = phonenumber,
+                OtpTimeStamp = "date",
+                OtpTransactionId = transactionId
+            };
+            _context.Add(tranlog);
+            _context.SaveChanges();
+            return Json(jsonAfterOtp);
         }
+
+
+        public JsonResult chargeOTP()
+        {
+            var authKey = "63quBZlgqkccpGaZSMAV3V9laOzm";
+            
+            return null;
+        }
+        
+        
+        
+        
         
         // GET: ShortBios/Edit/5
         [Authorize]

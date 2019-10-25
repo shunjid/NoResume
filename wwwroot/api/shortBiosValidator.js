@@ -1,6 +1,7 @@
+var transactionId;
 $(document).ready(function(){
     $('.modal').modal();
-    $('.modal').modal('open');
+    
     
     var postLoader = $('#postLoader');
     postLoader.hide();
@@ -28,16 +29,22 @@ $(document).ready(function(){
         });
     });
 
+    
     $("#subscriptionForm").submit(function(e){
         e.preventDefault();
         var phonenumber = $("#PhoneNumber").val();
         $.post('/ShortBios/createOTP', {phonenumber : phonenumber}, function (responseData) {
-            console.log(responseData);
-            
+            //console.log(phonenumber);
+            $('.modal').modal('open');
+        }).done(function (xhr, status){
+           // console.log(xhr);
         });
     });
         
-        
+        $("#otpForm").submit(function (e) {
+           e.preventDefault();
+           
+        });
         
 });
 
