@@ -31,7 +31,7 @@ namespace NoResume.Controllers
         public JsonResult createOTP(string phonenumber)
         {
             
-            var authKey = "kI5ZQKk0K8z2w4zGMiCMVist6b1L";
+            var authKey = "Lh6M4uGQ0Glw0ZW59H9tXpsXAOf7";
             var url = "https://apigw.grameenphone.com:9001/payments/v2/customers/"+ phonenumber +"/pushotp";
 
             var client = new RestClient(url);
@@ -47,7 +47,7 @@ namespace NoResume.Controllers
             request.AddHeader("Authorization", "Bearer "+authKey);
             request.AddHeader("Content-Type", "application/json");
             request.AddHeader("Accept-Encoding", "application/gzip");
-            request.AddParameter("undefined", "{\r\n \"sourceId\":\"AGWWolfP\",\r\n \"idType\":\"MSISDN\",\r\n \"amount\":\"1\",\r\n \"priceCode\":\"PPU00021805630191022841\",\r\n \"serviceId\":\"PPU00021805630\",\r\n \"description\":\"Any\"\r\n}", ParameterType.RequestBody);
+            request.AddParameter("undefined", "{\r\n \"sourceId\":\"AGWWolfP\",\r\n \"idType\":\"MSISDN\",\r\n \"amount\":\"5\",\r\n \"priceCode\":\"PPU00021805630191022841\",\r\n \"serviceId\":\"PPU00021805630\",\r\n \"description\":\"Any\"\r\n}", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             var jsonAfterOtp = JObject.Parse(response.Content);
             var transactionId = jsonAfterOtp["data"]["otpTrasactionId"].ToString();            
@@ -68,11 +68,11 @@ namespace NoResume.Controllers
 
         public JsonResult chargeOTP(string tpin)
         {
-            var authKey = "kI5ZQKk0K8z2w4zGMiCMVist6b1L";
+            var authKey = "Lh6M4uGQ0Glw0ZW59H9tXpsXAOf7";
             var tranlog = _context.TransactionLogs.Last(t => t.DevId == _getCurrentlyLoggedInUser());
 
 
-            var client = new RestClient("https://apigw.grameenphone.com:9001/payments/v2/customers/8801777238419/chargeotp");
+            var client = new RestClient("https://apigw.grameenphone.com:9001/payments/v2/customers/"+ tranlog.PhoneNumber +"/chargeotp");
             var request = new RestRequest(Method.POST);
             request.AddHeader("cache-control", "no-cache");
             request.AddHeader("Connection", "keep-alive");
@@ -87,6 +87,23 @@ namespace NoResume.Controllers
             request.AddHeader("Accept-Encoding", "application/gzip");
             request.AddParameter("undefined", "{\r\n \"sourceId\": \"AGWWolfP\",\r\n \"idType\": \"MSISDN\",\r\n \"serviceId\": \"PPU00021805630\",\r\n \"transactionPin\": \""+ tpin +"\",\r\n \"otpTransactionId\": \""+  tranlog.OtpTransactionId  +"\",\r\n \"category\": \"web\",\r\n \"description\": \"Any\"\r\n}\r\n", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
+
+            var jsonAfterOtp = JObject.Parse(response.Content);
+            var transactionId = jsonAfterOtp["data"]["transactionId"].ToString();  
+            var severreferencecode = jsonAfterOtp["data"]["serverReferenceCode"].ToString();
+            var amountpaid = jsonAfterOtp["data"]["amount"].ToString();  
+            var timestamp = jsonAfterOtp["accessInfo"]["timestamp"].ToString();  
+
+            var addNewSubscription = new Subscription{
+                DevId = _getCurrentlyLoggedInUser(),
+                ServeReferenceCode = severreferencecode,
+                AmountPaid = float.Parse(amountpaid),
+                TimeStamp = timestamp,
+                TransactionId = transactionId
+            };
+
+            _context.Add(addNewSubscription);
+            _context.SaveChanges();
 
 
             return Json("Success");
