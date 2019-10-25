@@ -37,10 +37,20 @@ namespace NoResume.Controllers
             }
             
             var shortBio = await _context.ShortBios.FindAsync(id);
+            var subscription = await _context.Subscriptions.FindAsync(id);
             
             TextInfo caseTitle = new CultureInfo("en-US",false).TextInfo;
             ViewBag.loggedInUserName = caseTitle.ToTitleCase(_userManager.GetUserName(HttpContext.User));
             ViewBag.loggedInUserId = _userManager.GetUserId(HttpContext.User);
+            if (subscription != null)
+            {
+                ViewBag.subscriptionStatus = "Yes";
+            }
+            else
+            {
+                ViewBag.subscriptionStatus = "No";
+            }
+            
             
             if (shortBio == null)
             {

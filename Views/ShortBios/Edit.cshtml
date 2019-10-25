@@ -35,11 +35,40 @@
         </div>
     </div>
 </div>
+
+@{
+    if (ViewBag.subscriptionStatus == "No")
+    {
+        <div class="row">
+            <div class="col s12">
+                <form id="subscriptionForm">
+                    <div class="row">
+                         <div class="input-field col s12">
+                                  <input id="first_name" type="number" class="validate">
+                                  <label for="first_name">Phone Number</label>
+                                </div>
+                        <div class="center-align">
+                            <input type="submit" value="Pay with GP" class="btn blue darken-3"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+    else
+    {
+        <h4>You already have subscribed</h4>
+    }
+}
+
+
 <div class="row">
     <div class="col s12">
         <div class="card z-depth-2">
             <div class="card-content">
-                <div class="center-align"><h5 class="indigo-text text-darken-2">Update your Bio</h5></div>
+                <div class="center-align">
+                    <h5 class="indigo-text text-darken-2">Update your Bio</h5>
+                </div>
                 <form asp-action="Edit" id="BioEditorForm">
                     <div asp-validation-summary="ModelOnly" class="red-text text-darken-2"></div>
                     <input type="hidden" asp-for="DeveloperId"/>
