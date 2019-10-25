@@ -71,7 +71,6 @@ namespace NoResume.Controllers
             var authKey = "w2hey0A9C8fTvvuCXcIvAhNeHxDz";
             var tranlog = _context.TransactionLogs.Last(t => t.DevId == _getCurrentlyLoggedInUser());
 
-
             var client = new RestClient("https://apigw.grameenphone.com:9001/payments/v2/customers/"+ tranlog.PhoneNumber +"/chargeotp");
             var request = new RestRequest(Method.POST);
             request.AddHeader("cache-control", "no-cache");
