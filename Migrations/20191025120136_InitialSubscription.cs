@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NoResume.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialSubscription : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -67,6 +67,20 @@ namespace NoResume.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DevAuthorizations",
+                columns: table => new
+                {
+                    AuthId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    AccessToken = table.Column<string>(nullable: true),
+                    TimeStamp = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DevAuthorizations", x => x.AuthId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ShortBios",
                 columns: table => new
                 {
@@ -94,6 +108,35 @@ namespace NoResume.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SocialProfiles", x => x.DeveloperId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Subscriptions",
+                columns: table => new
+                {
+                    DevId = table.Column<string>(nullable: false),
+                    ServeReferenceCode = table.Column<string>(nullable: true),
+                    AmountPaid = table.Column<float>(nullable: false),
+                    TransactionId = table.Column<string>(nullable: true),
+                    TimeStamp = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Subscriptions", x => x.DevId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TransactionLogs",
+                columns: table => new
+                {
+                    DevId = table.Column<string>(nullable: false),
+                    OtpTransactionId = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    OtpTimeStamp = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TransactionLogs", x => x.DevId);
                 });
 
             migrationBuilder.CreateTable(
@@ -278,10 +321,19 @@ namespace NoResume.Migrations
                 name: "Audits");
 
             migrationBuilder.DropTable(
+                name: "DevAuthorizations");
+
+            migrationBuilder.DropTable(
                 name: "ShortBios");
 
             migrationBuilder.DropTable(
                 name: "SocialProfiles");
+
+            migrationBuilder.DropTable(
+                name: "Subscriptions");
+
+            migrationBuilder.DropTable(
+                name: "TransactionLogs");
 
             migrationBuilder.DropTable(
                 name: "WorkingProfiles");

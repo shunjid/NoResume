@@ -1,7 +1,10 @@
-﻿namespace NoResume.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace NoResume.Models
 {
     public class Subscription
     {
+	[Key]
         public string DevId { get; set; }
         public string ServeReferenceCode { get; set; }
         public float AmountPaid { get; set; }

@@ -22,8 +22,8 @@
       <e p="Dockerfile" t="Include" />
       <e p="Making.md" t="Include" />
       <e p="Migrations" t="Include">
-        <e p="20191024113535_InitialCreate.cs" t="Include" />
-        <e p="20191024113535_InitialCreate.Designer.cs" t="Include" />
+        <e p="20191025120136_InitialSubscription.cs" t="Include" />
+        <e p="20191025120136_InitialSubscription.Designer.cs" t="Include" />
         <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
       </e>
       <e p="Models" t="Include">

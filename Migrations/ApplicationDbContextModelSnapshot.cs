@@ -208,6 +208,20 @@ namespace NoResume.Migrations
                     b.ToTable("Audits");
                 });
 
+            modelBuilder.Entity("NoResume.Models.DevAuthorization", b =>
+                {
+                    b.Property<int>("AuthId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AccessToken");
+
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.HasKey("AuthId");
+
+                    b.ToTable("DevAuthorizations");
+                });
+
             modelBuilder.Entity("NoResume.Models.ShortBio", b =>
                 {
                     b.Property<string>("DeveloperId")
@@ -244,6 +258,40 @@ namespace NoResume.Migrations
                     b.HasKey("DeveloperId");
 
                     b.ToTable("SocialProfiles");
+                });
+
+            modelBuilder.Entity("NoResume.Models.Subscription", b =>
+                {
+                    b.Property<string>("DevId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<float>("AmountPaid");
+
+                    b.Property<string>("ServeReferenceCode");
+
+                    b.Property<string>("TimeStamp");
+
+                    b.Property<string>("TransactionId");
+
+                    b.HasKey("DevId");
+
+                    b.ToTable("Subscriptions");
+                });
+
+            modelBuilder.Entity("NoResume.Models.TransactionLog", b =>
+                {
+                    b.Property<string>("DevId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("OtpTimeStamp");
+
+                    b.Property<string>("OtpTransactionId");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.HasKey("DevId");
+
+                    b.ToTable("TransactionLogs");
                 });
 
             modelBuilder.Entity("NoResume.Models.WorkingProfile", b =>
