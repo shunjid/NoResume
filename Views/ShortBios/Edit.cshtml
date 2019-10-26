@@ -54,12 +54,40 @@
                 </form>
                 <div id="modal1" class="modal">
                             <div class="modal-content">
+                                <div class="col s12" id="agreement">
+                                    <table class="responsive-table">
+                                        <thead>
+                                            <tr>
+                                                <td>Area of Billing</td>
+                                                <td>Bill</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Link activation fee</td>
+                                                <td>5.00 BDT</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Vat and others</td>
+                                                <td>1.38 BDT BDT</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Total</b></td>
+                                                <td>6.38 BDT</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="center-align">
+                                        <input type="button" id="rejectbtn" value="reject" class="btn red darken-3"/>
+                                        <input type="button" id="acceptbtn" value="accept" class="btn green darken-3"/>
+                                    </div><br>
+                                </div>
                                 <form class="col s12" id="otpForm">
                                     <div class="row">
                                         <div class="center-align">
                                             <div class="input-field col s12">
                                                 <input name="otp" id="otp" type="number" class="validate">
-                                                <label for="otp">OTP code</label>
+                                                <label for="otp">A code has sent in your GP number. Please input OTP number</label>
                                             </div>
                                         </div>
                                     </div>
@@ -75,10 +103,10 @@
     else
     {
         var url = "/dev/"+@ViewBag.loggedInUserName;
-        <div class="card col s12 green-text text-darken-1">
+        <div class="card  green-text text-darken-4">
             <div class="card-content">
-                <h6>You are already subscribed. Your premium template link is 
-                    <span><a href="@url" target="_blank">here</a></span></h6>
+                <h6 class="center-align">You have been subscribed. Your premium template link is 
+                    <span class="indigo-text text-darken-4"><a href="@url" target="_blank"><b>Here</b></a></span></h6>
             </div>
         </div>
     }

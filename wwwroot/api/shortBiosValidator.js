@@ -43,12 +43,27 @@ $(document).ready(function(){
         }
         else if (phonenumber.startsWith("017") || phonenumber.startsWith("013"))
         {
-            phonenumber = "88"+phonenumber;
-            $.post('/ShortBios/createOTP', {phonenumber : phonenumber}, function (responseData) {
-                //console.log(phonenumber);
-                $('.modal').modal('open');
-            }).done(function (xhr, status){
-                 console.log(xhr);
+            $("#otpForm").hide();
+            $("#agreement").show();
+            $('.modal').modal('open');
+            $("#acceptbtn").click(function(){
+                
+                $("#agreement").hide();
+                $("#otpForm").show();
+
+                phonenumber = "88"+phonenumber;
+                $.post('/ShortBios/createOTP', {phonenumber : phonenumber}, function (responseData) {
+                    
+                    // nothing 
+ 
+                }).done(function (xhr, status){
+                   // nothing
+                });
+          
+            });
+
+            $("#rejectbtn").click(function(){
+                $('.modal').modal('close');
             });
         }
         else
@@ -58,7 +73,6 @@ $(document).ready(function(){
                 classes: 'red darken-4'
             });
         }
-        
     });
         
         $("#otpForm").submit(function (e) {
@@ -66,8 +80,18 @@ $(document).ready(function(){
            var tpin = $("#otp").val();
          
             $.post('/ShortBios/chargeOTP', {tpin : tpin}, function (otpdata) {
-                console.log(otpdata);
-            });
+
+            }).done(function (xhr, status){
+                // nothing
+                location.reload();
+                
+             }).fail(function (xhr, status){
+                // nothing
+                M.toast({
+                    html: 'Incorrent OTP number !',
+                    classes: 'red darken-4'
+                });
+             });;
         });
 });
 
