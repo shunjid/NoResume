@@ -18,6 +18,7 @@ $(document).ready(function(){
                 });
                 $('#DevCurrentCity').text(response.currentCity);
                 $('#DevShortDescription').html(response.shortDescription);
+                $('input[name=PhoneNumber]').val(response.developerPhoneNumber);
                 true === response.isAvailableForJob ? $("#DevJobAvailability").text("Yes"):$("#DevJobAvailability").text("No");
             }else{
                 M.toast({
