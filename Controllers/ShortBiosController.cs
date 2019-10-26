@@ -31,7 +31,7 @@ namespace NoResume.Controllers
         public JsonResult createOTP(string phonenumber)
         {
             
-            var authKey = "9b0GHcvOAD4OYBGhOkoxGmG2VNyZ";
+            var authKey = "ExPbbOlgmWgOPY3z4fOUWybe8mM8";
             var url = "https://apigw.grameenphone.com:9001/payments/v2/customers/"+ phonenumber +"/pushotp";
 
             var client = new RestClient(url);
@@ -68,7 +68,7 @@ namespace NoResume.Controllers
 
         public JsonResult chargeOTP(string tpin)
         {
-            var authKey = "9b0GHcvOAD4OYBGhOkoxGmG2VNyZ";
+            var authKey = "ExPbbOlgmWgOPY3z4fOUWybe8mM8";
             var tranlog = _context.TransactionLogs.Last(t => t.DevId == _getCurrentlyLoggedInUser());
 
             var client = new RestClient("https://apigw.grameenphone.com:9001/payments/v2/customers/"+ tranlog.PhoneNumber +"/chargeotp");
