@@ -34,12 +34,31 @@ $(document).ready(function(){
     $("#subscriptionForm").submit(function(e){
         e.preventDefault();
         var phonenumber = $("#PhoneNumber").val();
-        $.post('/ShortBios/createOTP', {phonenumber : phonenumber}, function (responseData) {
-            //console.log(phonenumber);
-            $('.modal').modal('open');
-        }).done(function (xhr, status){
-             console.log(xhr);
-        });
+        if(phonenumber.length != 11)
+        {
+            M.toast({
+                html: 'Number must be 11 digit !',
+                classes: 'red darken-4'
+            });
+        }
+        else if (phonenumber.startsWith("017") || phonenumber.startsWith("013"))
+        {
+            phonenumber = "88"+phonenumber;
+            $.post('/ShortBios/createOTP', {phonenumber : phonenumber}, function (responseData) {
+                //console.log(phonenumber);
+                $('.modal').modal('open');
+            }).done(function (xhr, status){
+                 console.log(xhr);
+            });
+        }
+        else
+        {
+            M.toast({
+                html: 'You have to use GP number !',
+                classes: 'red darken-4'
+            });
+        }
+        
     });
         
         $("#otpForm").submit(function (e) {
