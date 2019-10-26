@@ -69,6 +69,5 @@ $(document).ready(function(){
                 console.log(otpdata);
             });
         });
-        
 });
 
