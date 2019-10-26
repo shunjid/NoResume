@@ -55,11 +55,12 @@
                 <div id="modal1" class="modal">
                             <div class="modal-content">
                                 <div class="col s12" id="agreement">
-                                    <table class="responsive-table">
+                                    <div class="center-align teal-text text-darken-3"><h6><b>User Payment Roadmap</b></h6></div>
+                                    <table class="responsive-table centered">
                                         <thead>
                                             <tr>
-                                                <td>Area of Billing</td>
-                                                <td>Bill</td>
+                                                <th>Area of Billing</th>
+                                                <th>Bill</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -68,8 +69,8 @@
                                                 <td>5.00 BDT</td>
                                             </tr>
                                             <tr>
-                                                <td>Vat and others</td>
-                                                <td>1.38 BDT BDT</td>
+                                                <td>Vat, SC, SD</td>
+                                                <td>1.38 BDT</td>
                                             </tr>
                                             <tr>
                                                 <td><b>Total</b></td>
@@ -77,9 +78,10 @@
                                             </tr>
                                         </tbody>
                                     </table>
+                                    <p>Do you wish to continue with the payment?</p><br>
                                     <div class="center-align">
-                                        <input type="button" id="rejectbtn" value="reject" class="btn red darken-3"/>
-                                        <input type="button" id="acceptbtn" value="accept" class="btn green darken-3"/>
+                                        <input type="button" id="rejectbtn" value="no" class="btn red darken-3"/>
+                                        <input type="button" id="acceptbtn" value="yes" class="btn green darken-3"/>
                                     </div><br>
                                 </div>
                                 <form class="col s12" id="otpForm">
@@ -111,7 +113,6 @@
               </div>
     }
 }
-
 
 <div class="row">
     <div class="col s12">
