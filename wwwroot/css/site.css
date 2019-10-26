@@ -12,6 +12,97 @@
   padding-bottom: 10px;
 }
 
+.left-alert input[type=text] + label:after,
+.left-alert input[type=password] + label:after,
+.left-alert input[type=email] + label:after,
+.left-alert input[type=url] + label:after,
+.left-alert input[type=time] + label:after,
+.left-alert input[type=date] + label:after,
+.left-alert input[type=datetime-local] + label:after,
+.left-alert input[type=tel] + label:after,
+.left-alert input[type=number] + label:after,
+.left-alert input[type=search] + label:after,
+.left-alert textarea.materialize-textarea + label:after
+{
+    left: 0;
+}
+
+.right-alert input[type=text] + label:after,
+.right-alert input[type=password] + label:after,
+.right-alert input[type=email] + label:after,
+.right-alert input[type=url] + label:after,
+.right-alert input[type=time] + label:after,
+.right-alert input[type=date] + label:after,
+.right-alert input[type=datetime-local] + label:after,
+.right-alert input[type=tel] + label:after,
+.right-alert input[type=number] + label:after,
+.right-alert input[type=search] + label:after,
+.right-alert textarea.materialize-textarea + label:after
+{
+    right: 70px;
+}
+
+/* alert card */
+.card-alert .card-content
+{
+    padding: 10px 20px;
+}
+
+.card-alert i
+{
+    font-size: 20px;
+
+    position: relative;
+    top: 2px;
+}
+
+.card-alert .alert-circle
+{
+    position: relative;
+    top: -5px;
+    left: -2px;
+
+    display: inline-block;
+
+    width: 40px;
+
+    vertical-align: bottom;
+    white-space: nowrap;
+
+    border-radius: 1000px;
+}
+
+.card-alert .single-alert
+{
+    line-height: 42px;
+}
+
+.card-alert button
+{
+    font-size: 20px;
+
+    position: absolute;
+    top: 5px;
+    right: 10px;
+
+    color: #fff;
+    border: none;
+    background: none;
+}
+
+.card-alert .card .card-content
+{
+    padding: 20px 40px 20px 20px;
+}
+
+.card-alert .card-action i
+{
+    top: 0;
+
+    margin: 0;
+}
+
+
 /* ipad pro */
 
 @media screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {

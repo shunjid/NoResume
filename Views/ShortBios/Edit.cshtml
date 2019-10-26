@@ -103,12 +103,12 @@
     else
     {
         var url = "/dev/"+@ViewBag.loggedInUserName;
-        <div class="card  green-text text-darken-4">
-            <div class="card-content">
-                <h6 class="center-align">You have been subscribed. Your premium template link is 
-                    <span class="indigo-text text-darken-4"><a href="@url" target="_blank"><b>Here</b></a></span></h6>
-            </div>
-        </div>
+        <div class="card-alert card green center-align">
+                <div class="card-content white-text">
+                  <p class="white-text"><b>You have been subscribed. Your premium template link is</b> 
+                    <a class="yellow-text text-lighten-3" href="@url" target="_blank"><b>Here</b></a></p>
+                </div>
+              </div>
     }
 }
 
