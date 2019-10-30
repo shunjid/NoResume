@@ -1,3 +1,6 @@
-
+﻿
 # Default ignored files
 /.idea.NoResume.dir/.idea/workspace.xml
+# Datasource local storage ignored files
+/.idea.NoResume.dir/.idea/dataSources/
+/.idea.NoResume.dir/.idea/dataSources.local.xml

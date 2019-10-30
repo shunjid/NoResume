@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NoResume.Migrations
 {
-    public partial class InitialAuth : Migration
+    public partial class InitialHack : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,6 +44,120 @@ namespace NoResume.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Audits",
+                columns: table => new
+                {
+                    AuditId = table.Column<string>(nullable: false),
+                    AuditDescription = table.Column<string>(nullable: false),
+                    IsExceptionThrown = table.Column<bool>(nullable: false),
+                    DeveloperOrAnonymous = table.Column<string>(nullable: false),
+                    TimeOfAction = table.Column<DateTime>(nullable: false),
+                    InternetProtocol = table.Column<string>(nullable: false),
+                    Country = table.Column<string>(nullable: false),
+                    CountryCode = table.Column<string>(nullable: false),
+                    Latitude = table.Column<string>(nullable: false),
+                    Longitude = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Audits", x => x.AuditId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DevAuthorizations",
+                columns: table => new
+                {
+                    AuthId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    AccessToken = table.Column<string>(nullable: true),
+                    TimeStamp = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DevAuthorizations", x => x.AuthId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ShortBios",
+                columns: table => new
+                {
+                    DeveloperId = table.Column<string>(nullable: false),
+                    DeveloperName = table.Column<string>(nullable: false),
+                    DeveloperPhoneNumber = table.Column<string>(nullable: true),
+                    ShortDescription = table.Column<string>(maxLength: 2048, nullable: true),
+                    CurrentCity = table.Column<string>(nullable: true),
+                    IsAvailableForJob = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ShortBios", x => x.DeveloperId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SocialProfiles",
+                columns: table => new
+                {
+                    DeveloperId = table.Column<string>(nullable: false),
+                    LinkedInUsername = table.Column<string>(nullable: true),
+                    FacebookUsername = table.Column<string>(nullable: true),
+                    TwitterUsername = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SocialProfiles", x => x.DeveloperId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Subscriptions",
+                columns: table => new
+                {
+                    SubId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    DevId = table.Column<string>(nullable: true),
+                    ServeReferenceCode = table.Column<string>(nullable: true),
+                    AmountPaid = table.Column<float>(nullable: false),
+                    TransactionId = table.Column<string>(nullable: true),
+                    TimeStamp = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Subscriptions", x => x.SubId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TransactionLogs",
+                columns: table => new
+                {
+                    TranId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    DevId = table.Column<string>(nullable: true),
+                    OtpTransactionId = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    OtpTimeStamp = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TransactionLogs", x => x.TranId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WorkingProfiles",
+                columns: table => new
+                {
+                    DeveloperId = table.Column<string>(nullable: false),
+                    GithubUsername = table.Column<string>(nullable: true),
+                    PrivacyForGithub = table.Column<bool>(nullable: false),
+                    CodeforcesUsername = table.Column<string>(nullable: true),
+                    PrivacyForCodeforces = table.Column<bool>(nullable: false),
+                    UhuntUsername = table.Column<string>(nullable: true),
+                    PrivacyForUhunt = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WorkingProfiles", x => x.DeveloperId);
                 });
 
             migrationBuilder.CreateTable(
@@ -206,6 +320,27 @@ namespace NoResume.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Audits");
+
+            migrationBuilder.DropTable(
+                name: "DevAuthorizations");
+
+            migrationBuilder.DropTable(
+                name: "ShortBios");
+
+            migrationBuilder.DropTable(
+                name: "SocialProfiles");
+
+            migrationBuilder.DropTable(
+                name: "Subscriptions");
+
+            migrationBuilder.DropTable(
+                name: "TransactionLogs");
+
+            migrationBuilder.DropTable(
+                name: "WorkingProfiles");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

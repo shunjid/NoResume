@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "/home/shunjid/Documents/API-Hackathon/NoResume/NoResume.csproj": {}
+    "E:\\NoResume\\NoResume.csproj": {}
   },
   "projects": {
-    "/home/shunjid/Documents/API-Hackathon/NoResume/NoResume.csproj": {
+    "E:\\NoResume\\NoResume.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/shunjid/Documents/API-Hackathon/NoResume/NoResume.csproj",
+        "projectUniqueName": "E:\\NoResume\\NoResume.csproj",
         "projectName": "NoResume",
-        "projectPath": "/home/shunjid/Documents/API-Hackathon/NoResume/NoResume.csproj",
-        "packagesPath": "/home/shunjid/.nuget/packages/",
-        "outputPath": "/home/shunjid/Documents/API-Hackathon/NoResume/obj/",
+        "projectPath": "E:\\NoResume\\NoResume.csproj",
+        "packagesPath": "C:\\Users\\Zubu\\.nuget\\packages\\",
+        "outputPath": "E:\\NoResume\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/home/shunjid/.config/NuGet/NuGet.Config"
+          "C:\\Users\\Zubu\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
@@ -92,6 +92,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.2, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[106.6.10, )"
             }
           },
           "imports": [

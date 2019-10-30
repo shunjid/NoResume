@@ -9,8 +9,8 @@ using NoResume.Models;
 namespace NoResume.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190730181910_InitialAuth")]
-    partial class InitialAuth
+    [Migration("20191025164856_InitialHack")]
+    partial class InitialHack
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -173,6 +173,153 @@ namespace NoResume.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("NoResume.Models.AuditLogging", b =>
+                {
+                    b.Property<string>("AuditId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AuditDescription")
+                        .IsRequired();
+
+                    b.Property<string>("Country")
+                        .IsRequired();
+
+                    b.Property<string>("CountryCode")
+                        .IsRequired();
+
+                    b.Property<string>("DeveloperOrAnonymous")
+                        .IsRequired();
+
+                    b.Property<string>("InternetProtocol")
+                        .IsRequired();
+
+                    b.Property<bool>("IsExceptionThrown");
+
+                    b.Property<string>("Latitude")
+                        .IsRequired();
+
+                    b.Property<string>("Longitude")
+                        .IsRequired();
+
+                    b.Property<DateTime>("TimeOfAction");
+
+                    b.HasKey("AuditId");
+
+                    b.ToTable("Audits");
+                });
+
+            modelBuilder.Entity("NoResume.Models.DevAuthorization", b =>
+                {
+                    b.Property<int>("AuthId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AccessToken");
+
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.HasKey("AuthId");
+
+                    b.ToTable("DevAuthorizations");
+                });
+
+            modelBuilder.Entity("NoResume.Models.ShortBio", b =>
+                {
+                    b.Property<string>("DeveloperId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CurrentCity");
+
+                    b.Property<string>("DeveloperName")
+                        .IsRequired();
+
+                    b.Property<string>("DeveloperPhoneNumber");
+
+                    b.Property<bool>("IsAvailableForJob");
+
+                    b.Property<string>("ShortDescription")
+                        .HasMaxLength(2048);
+
+                    b.HasKey("DeveloperId");
+
+                    b.ToTable("ShortBios");
+                });
+
+            modelBuilder.Entity("NoResume.Models.SocialProfile", b =>
+                {
+                    b.Property<string>("DeveloperId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("FacebookUsername");
+
+                    b.Property<string>("LinkedInUsername");
+
+                    b.Property<string>("TwitterUsername");
+
+                    b.HasKey("DeveloperId");
+
+                    b.ToTable("SocialProfiles");
+                });
+
+            modelBuilder.Entity("NoResume.Models.Subscription", b =>
+                {
+                    b.Property<int>("SubId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<float>("AmountPaid");
+
+                    b.Property<string>("DevId");
+
+                    b.Property<string>("ServeReferenceCode");
+
+                    b.Property<string>("TimeStamp");
+
+                    b.Property<string>("TransactionId");
+
+                    b.HasKey("SubId");
+
+                    b.ToTable("Subscriptions");
+                });
+
+            modelBuilder.Entity("NoResume.Models.TransactionLog", b =>
+                {
+                    b.Property<int>("TranId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("DevId");
+
+                    b.Property<string>("OtpTimeStamp");
+
+                    b.Property<string>("OtpTransactionId");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.HasKey("TranId");
+
+                    b.ToTable("TransactionLogs");
+                });
+
+            modelBuilder.Entity("NoResume.Models.WorkingProfile", b =>
+                {
+                    b.Property<string>("DeveloperId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CodeforcesUsername");
+
+                    b.Property<string>("GithubUsername");
+
+                    b.Property<bool>("PrivacyForCodeforces");
+
+                    b.Property<bool>("PrivacyForGithub");
+
+                    b.Property<bool>("PrivacyForUhunt");
+
+                    b.Property<string>("UhuntUsername");
+
+                    b.HasKey("DeveloperId");
+
+                    b.ToTable("WorkingProfiles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

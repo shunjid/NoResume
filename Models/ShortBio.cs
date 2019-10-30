@@ -7,6 +7,11 @@ namespace NoResume.Models
         [Key]
         [Required]
         public string DeveloperId { get; set; }
+
+        [Required]
+        public string DeveloperName { get; set; }
+
+        public string DeveloperPhoneNumber { get; set; }
         
         [DataType(DataType.Html)]
         [MinLength(25)]

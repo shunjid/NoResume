@@ -1,80 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>@ViewData["Title"] - NoResume</title>
-      <environment include="Development">
-         <link rel="stylesheet" href="~/lib/materialize/css/materialize.css" />
-         <link rel="stylesheet" href="~/css/custom.css" />
-      </environment>
-      <environment exclude="Development">
-         <link rel="stylesheet" href="~/lib/materialize/css/materialize.min.css"/>
-         <link rel="stylesheet" href="~/css/custom.min.css" />
-      </environment>
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=Poiret+One|Quicksand&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=Product+Sans:400&amp;lang=en" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=Google+Sans:400,500&amp;lang=en" rel="stylesheet">
-      <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
-         integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
-      <link rel="stylesheet" href="~/css/site.css">
-   </head>
-   <body class="grey darken-4 white-text">
-      <header>
-         <nav id="navbarMaterialize" class="gradient-45deg-blue-blue">
-            <div class="nav-wrapper">
-               <a asp-area="" asp-controller="Home" asp-action="Index" class="brand-logo" id="page-logo">
-               <i class="material-icons" id="page-logo-icon">layers_clear</i> noResume
-               </a>
-               <a href="#" class="sidenav-trigger" data-target="mobile-nav">
-               <i class="material-icons">menu</i>
-               </a>
-               <ul class="right hide-on-med-and-down ">
-                  <li>
-                     <a class="tooltipped" data-position="bottom" data-tooltip="GitHub" target="_blank"
-                        href="https://github.com/shunjid/NoResume.git">
-                     <i class="fab fa-github"></i>
-                     </a>
-                  </li>
-                  <li>
-                     <a class="" asp-action="Login" asp-controller="Account"><i class="fas fa-sign-in-alt white-text left"></i> SignIn</a>
-                  </li>
-               </ul>
-            </div>
-         </nav>
-         <ul class="sidenav gradient-45deg-grey-grey" id="mobile-nav">
-            <li>
-               <a target="_blank" class="title white-text" href="https://github.com/shunjid/NoResume.git">
-               <i class="white-text fab fa-github"></i> GitHub
-               </a>
-            </li>
-            <li>
-               <a target="_blank" class="btn gradient-45deg-grey-grey white-text" asp-action="Login" asp-controller="Account">
-               <i class="fas fa-sign-in-alt white-text right"></i> SignIn 
-               </a>
-            </li>
-         </ul>
-      </header>
-      <div id="intLoader">
-         <div class="progress green lighten-1">
-            <div class="indeterminate yellow darken-1"></div>
-         </div>
-      </div>
-      <div class="section grey darken-4 white-text">
-         <main role="main" class="main">
-            @RenderBody()
-         </main>
-      </div>
-      <environment include="Development">
-         <script src="~/lib/jquery/dist/jquery.js"></script>
-         <script src="~/lib/materialize/js/materialize.js"></script>
-      </environment>
-      <environment exclude="Development">
-         <script src="~/lib/jquery/dist/jquery.min.js"></script>
-         <script src="~/lib/materialize/js/materialize.min.js"></script>
-      </environment>
-      <script src="~/js/site.js" asp-append-version="true"></script>
-      @RenderSection("Scripts", required: false)
-   </body>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - NoResume</title>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/materialize/css/materialize.css"/>
+        <link rel="stylesheet" href="~/css/custom.css"/>
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/lib/materialize/css/materialize.min.css"/>
+        <link rel="stylesheet" href="~/css/custom.min.css"/>
+    </environment>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One|Quicksand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Product+Sans:400&amp;lang=en" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans:400,500&amp;lang=en" rel="stylesheet">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
+          integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="~/premiumtemplate/css/card.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav id="navbarMaterialize" class="gradient-45deg-blue-blue">
+        <div class="nav-wrapper">
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="brand-logo" id="page-logo">
+                <i class="material-icons" id="page-logo-icon">layers_clear</i> noResume
+            </a>
+            <a href="#" class="sidenav-trigger" data-target="mobile-nav">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down ">
+                <li>
+                    <a class="" asp-action="Login" asp-controller="Account">SignIn</a>
+                </li>
+                <li>
+                    <a class="" asp-action="Register" asp-controller="Account">SignUp</a>
+                </li>
+                <li>
+                    <a class="tooltipped" data-position="bottom" data-tooltip="GitHub" target="_blank"
+                       href="https://github.com/shunjid/NoResume.git">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <ul class="sidenav gradient-45deg-grey-grey" id="mobile-nav">
+        <li>
+            <a target="_blank" class="title white-text" href="https://github.com/shunjid/NoResume.git">
+                <i class="white-text fab fa-github"></i> GitHub
+            </a>
+        </li>
+        <li>
+            <a target="_blank" class="btn gradient-45deg-grey-grey white-text" asp-action="Login" asp-controller="Account">
+                <i class="fas fa-sign-in-alt white-text right"></i> SignIn
+            </a>
+        </li>
+    </ul>
+</header>
+<div id="intLoader">
+    <div class="progress green lighten-1">
+        <div class="indeterminate yellow darken-1"></div>
+    </div>
+</div>
+<div class="section">
+    <main role="main" class="main">
+        @RenderBody()
+    </main>
+</div>
+<environment include="Development">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/materialize/js/materialize.js"></script>
+</environment>
+<environment exclude="Development">
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/materialize/js/materialize.min.js"></script>
+</environment>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@RenderSection("Scripts", required: false)
+</body>
 </html>

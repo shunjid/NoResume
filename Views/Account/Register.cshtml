@@ -1,7 +1,8 @@
 @model InitDevelopers
 
 <div class="row center-align">
-    <div class="col s12 m12 l12 z-depth-4  border-radius-6 login-card">
+    <div class="card col s12 l6 offset-l3 offset-m1 z-depth-2">
+        <div class="card-content">
         <p>Already have account? <a asp-action="Login" asp-controller="Account" asp-route-returnUrl="@ViewBag.returnUrl">Let's Dig In</a></p>
         <form method="post" class="col s12">
             <div asp-validation-summary="All" class="red-text text-darken-1"></div>
@@ -27,9 +28,10 @@
                 </div>
             </div>
             <div class="row">
-                <button type="submit" class="btn teal">getInitiated( );</button>
+                <button type="submit" class="btn indigo">SignUp</button>
             </div>
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <br/><br/>
         </form>
+        </div>
     </div>
 </div>

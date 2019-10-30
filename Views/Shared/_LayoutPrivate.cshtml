@@ -9,6 +9,7 @@
       <title>@ViewData["Title"] NoResume</title>
       <environment include="Development">
          <link rel="stylesheet" href="~/lib/materialize/css/materialize.css" />
+         <link rel="stylesheet" href="~/premiumtemplate/css/card.css"/>
       </environment>
       <environment exclude="Development">
          <link rel="stylesheet" href="~/lib/materialize/css/materialize.min.css"/>
@@ -31,7 +32,7 @@
                      @if (SignInManager.IsSignedIn(User))
                      {
                      <!-- Dropdown Trigger -->
-                     <a class='dropdown-trigger btn blue darken-3' href='#' data-target='dropdown1'><i class="material-icons right">keyboard_arrow_down</i>Navigation</a>
+                     <a class='dropdown-trigger waves-teal btn-flat white-text' href='#' data-target='dropdown1'><i class="material-icons right">keyboard_arrow_down</i>Navigation</a>
                      <form id="logoutform" method="post" asp-action="Logout" asp-controller="Account"></form>
                      <!-- Dropdown Structure -->
                      <ul id='dropdown1' class='dropdown-content'>

@@ -1,0 +1,126 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- TITLE OF SITE-->
+    <title> Template</title>
+
+    <!-- META TAG -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CV, Portfolio, NoResume">
+
+    <!-- ========================================
+                Stylesheets
+        ==========================================-->
+
+    <!-- MATERIALIZE CORE CSS -->
+    <link href="~/premiumtemplate/css/materialize.min.css" rel="stylesheet">
+
+
+    <!-- FONTS -->
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,700,400italic,700italic' rel='stylesheet'
+        type='text/css'>
+    <!--FONTAWESOME CSS-->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- CUSTOM STYLE -->
+    <link href="~/premiumtemplate/css/style.css" rel="stylesheet">
+    <link href="~/premiumtemplate/css/chart.css" rel="stylesheet">
+    <link href="~/premiumtemplate/css/card.css" rel="stylesheet">
+
+
+    <!-- RESPONSIVE CSS-->
+    <link href="~/premiumtemplate/css/responsive.css" rel="stylesheet">
+
+    <!-- COLORS -->
+    <link rel="alternate stylesheet" href="~/premiumtemplate/css/colors/red.css" title="red">
+    <link rel="alternate stylesheet" href="~/premiumtemplate/css/colors/purple.css" title="purple">
+    <link rel="alternate stylesheet" href="~/premiumtemplate/css/colors/orange.css" title="orange">
+    <link rel="alternate stylesheet" href="~/premiumtemplate/css/colors/green.css" title="green">
+    <link rel="stylesheet" href="~/premiumtemplate/css/colors/lime.css" title="lime">
+
+
+    <!-- STYLE SWITCH STYLESHEET ONLY FOR DEMO -->
+    <link rel="stylesheet" href="~/premiumtemplate/css/demo.css">
+    
+
+
+</head>
+
+<body>
+    <!-- Start Container-->
+    <nav>
+        <div class="nav-wrapper cyan darken-4">
+          <a href="#" class="brand-logo">NoResume</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="sass.html">Home</a></li>
+            <li><a href="badges.html">Components</a></li>
+          </ul>
+        </div>
+      </nav>
+<div class="container">
+    @RenderBody()
+    </div> <!-- end container -->
+
+    <!--=====================
+                JavaScript
+        ===================== -->
+    <!-- Jquery core js-->
+    <script src="~/premiumtemplate/js/jquery.min.js"></script>
+
+    <!-- materialize js-->
+    <script src="~/premiumtemplate/js/materialize.min.js"></script>
+
+    <!-- wow js-->
+    <script src="~/premiumtemplate/js/wow.min.js"></script>
+
+    <!-- Customized js -->
+    <script src="~/premiumtemplate/js/init.js"></script>
+    <script src="~/chartjs/chart.min.js" asp-append-version="true"></script>
+    <!-- =========================================================
+            STYLE SWITCHER | ONLY FOR DEMO NOT INCLUDED IN MAIN FILES
+        ===========================================================-->
+
+    <!-- Style switter js -->
+    <script src="~/premiumtemplate/js/styleswitcher.js"></script>
+    <div class="cv-style-switch" id="switch-style">
+        <a id="toggle-switcher" class="switch-button icon_tools"> <i class="fa fa-cogs"></i></a>
+        <div class="switched-options">
+            <div class="config-title">
+                Colors :
+            </div>
+            <ul class="styles">
+                <li><a href="index.html#" onclick="setActiveStyleSheet('red'); return false;" title="Red">
+                        <div class="red"></div>
+                    </a></li>
+
+                <li><a href="index.html#" onclick="setActiveStyleSheet('purple'); return false;" title="purple">
+                        <div class="purple"></div>
+                    </a></li>
+
+                <li><a href="index.html#" onclick="setActiveStyleSheet('orange'); return false;" title="orange">
+                        <div class="orange"></div>
+                    </a></li>
+
+                <li><a href="index.html#" onclick="setActiveStyleSheet('green'); return false;" title="green">
+                        <div class="green"></div>
+                    </a></li>
+
+                <li><a href="index.html#" onclick="setActiveStyleSheet('lime'); return false;" title="lime">
+                        <div class="lime"></div>
+                    </a></li>
+
+                <li class="p">
+                    ( NOTE: Pre Defined Colors. You can change colors very easily )
+                </li>
+            </ul>
+        </div>
+    </div>
+
+@RenderSection("Scripts", required: false)
+</body>
+
+</html>
