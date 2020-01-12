@@ -1,3 +1,4 @@
+
 @model NoResume.Models.ShortBio
 
 @{
@@ -14,15 +15,90 @@
     <div class="col s12">
         <div class="card">
             <div class="card-content">
-                <span class="card-title">
-                    @ViewBag.loggedInUserName
-                    @if (Model.CurrentCity != "")
-                    {
-                        <span>(</span>
-                        <b id="DevCurrentCity">@Html.DisplayFor(model => model.CurrentCity)</b>
-                        <span>)</span>
-                    }
-                </span>
+                <div class="row">
+                    <div class="col s6 l6">
+                        <span class="card-title">
+                            @ViewBag.loggedInUserName
+                            @if (Model.CurrentCity != "")
+                            {
+                                <span>(</span>
+                                <b id="DevCurrentCity">@Html.DisplayFor(model => model.CurrentCity)</b>
+                                <span>)</span>
+                            }
+                        </span>
+                    </div>
+                    <div class="col s6 l6 right-align">
+                        <a class="waves-effect waves-light btn blue darken-3 modal-trigger" href="#modalEditShortBio"><i class="material-icons left">edit</i> Edit Your Bio</a>
+                    </div>
+                    
+                    <div id="modalEditShortBio" class="modal">
+                        <div class="modal-content">
+                          <div class="row">
+                              <div class="col s12">
+                                  <div class="card z-depth-2">
+                                      <div class="card-content">
+                                          <div class="center-align">
+                                              <h5 class="indigo-text text-darken-2">Update your Bio</h5>
+                                          </div>
+                                          <form asp-action="Edit" id="BioEditorForm">
+                                              <div asp-validation-summary="ModelOnly" class="red-text text-darken-2"></div>
+                                              <input type="hidden" asp-for="DeveloperId"/>
+                                              <br/>
+                                              <div class="row">
+                                                  <div class="input-field col s12">
+                                                      <input asp-for="DeveloperName" class="form-control"/>
+                                                      <label asp-for="DeveloperName" class="control-label">Full Name</label>
+                                                      <span asp-validation-for="DeveloperName" class="red-text"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="row">
+                                                  <div class="input-field col s12">
+                          
+                                                      <input asp-for="DeveloperPhoneNumber" class="form-control"/>
+                                                      <label asp-for="DeveloperPhoneNumber" class="validate">Phone Number</label>
+                                                      <span asp-validation-for="DeveloperPhoneNumber" class="red-text"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="row">
+                                                  <div class="input-field col s8">
+                                                      <input asp-for="CurrentCity" class="validate"/>
+                                                      <label asp-for="CurrentCity">Current City</label>
+                                                      <span asp-validation-for="CurrentCity" class="red-text"></span>
+                                                  </div>
+                          
+                                                  <div class="input-field col s4">
+                                                      <p>
+                                                          <label>
+                                                              <input type="checkbox" asp-for="IsAvailableForJob" class="filled-in"/>
+                                                              <span class="grey-text">@Html.DisplayNameFor(model => model.IsAvailableForJob)</span>
+                                                          </label>
+                                                      </p>
+                                                  </div>
+                                              </div>
+                          
+                                              <div class="row">
+                                                  <div class="input-field col s12">
+                                                      <label asp-for="ShortDescription" class="control-label"></label>
+                                                      <textarea asp-for="ShortDescription" class="form-control" ></textarea>
+                                                      <span asp-validation-for="ShortDescription" class="purple-text text-darken-3"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="center-align">
+                                                  <input type="submit" value="Update" class="btn blue darken-3"/>
+                                              </div>
+                                          </form>
+                          
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <a href="#" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                        </div>
+                    </div>
+                </div>
+                
                 <span id="DevShortDescription">@Html.DisplayFor(model => model.ShortDescription)</span>
             </div>
             <div class="card-action">
@@ -113,66 +189,6 @@
               </div>
     }
 }
-
-<div class="row">
-    <div class="col s12">
-        <div class="card z-depth-2">
-            <div class="card-content">
-                <div class="center-align">
-                    <h5 class="indigo-text text-darken-2">Update your Bio</h5>
-                </div>
-                <form asp-action="Edit" id="BioEditorForm">
-                    <div asp-validation-summary="ModelOnly" class="red-text text-darken-2"></div>
-                    <input type="hidden" asp-for="DeveloperId"/>
-                    <br/>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input asp-for="DeveloperName" class="form-control"/>
-                            <label asp-for="DeveloperName" class="control-label">Full Name</label>
-                            <span asp-validation-for="DeveloperName" class="red-text"></span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-
-                            <input asp-for="DeveloperPhoneNumber" class="form-control"/>
-                            <label asp-for="DeveloperPhoneNumber" class="validate">Phone Number</label>
-                            <span asp-validation-for="DeveloperPhoneNumber" class="red-text"></span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s8">
-                            <input asp-for="CurrentCity" class="validate"/>
-                            <label asp-for="CurrentCity">Current City</label>
-                            <span asp-validation-for="CurrentCity" class="red-text"></span>
-                        </div>
-
-                        <div class="input-field col s4">
-                            <p>
-                                <label>
-                                    <input type="checkbox" asp-for="IsAvailableForJob" class="filled-in"/>
-                                    <span class="grey-text">@Html.DisplayNameFor(model => model.IsAvailableForJob)</span>
-                                </label>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <label asp-for="ShortDescription" class="control-label"></label>
-                            <textarea asp-for="ShortDescription" class="form-control" ></textarea>
-                            <span asp-validation-for="ShortDescription" class="purple-text text-darken-3"></span>
-                        </div>
-                    </div>
-                    <div class="center-align">
-                        <input type="submit" value="Update" class="btn blue darken-3"/>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-    </div>
-</div>
 
 
 @section Scripts {
