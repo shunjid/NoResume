@@ -41,7 +41,7 @@ namespace NoResume.Controllers
                     return View(dev);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return NotFound();
             }
