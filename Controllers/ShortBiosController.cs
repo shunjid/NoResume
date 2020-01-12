@@ -145,7 +145,7 @@ namespace NoResume.Controllers
                 var subscription = await _context.Subscriptions.FirstAsync(t => t.DevId == id);
                 ViewBag.subscriptionStatus = "Yes";
 
-            }catch(Exception e){
+            }catch(Exception){
 
                 ViewBag.subscriptionStatus = "No";
             }

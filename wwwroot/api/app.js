@@ -1,29 +1,29 @@
-var colorArray = ["#003f5c", "#2f4b7c", "#665191", "#a05195", "#d45087", "#f95d6a", "#ff7c43", "#ffa600", "#00876c", "#439880", "#69a995", "#8bbaab", "#accbc0", "#cdddd7", "#eeeeee", "#efd2d2", "#eeb7b6", "#ea9b9c", "#e57e82", "#dd6069", "#d43d51", "#004c6d", "#255e7e", "#3d708f", "#5383a1", "#6996b3", "#7faac6", "#94bed9", "#abd2ec", "#c1e7ff",
+let colorArray = ["#003f5c", "#2f4b7c", "#665191", "#a05195", "#d45087", "#f95d6a", "#ff7c43", "#ffa600", "#00876c", "#439880", "#69a995", "#8bbaab", "#accbc0", "#cdddd7", "#eeeeee", "#efd2d2", "#eeb7b6", "#ea9b9c", "#e57e82", "#dd6069", "#d43d51", "#004c6d", "#255e7e", "#3d708f", "#5383a1", "#6996b3", "#7faac6", "#94bed9", "#abd2ec", "#c1e7ff",
     "#003f5c", "#2f4b7c", "#665191", "#a05195", "#d45087", "#f95d6a", "#ff7c43", "#ffa600", "#00876c", "#439880", "#69a995", "#8bbaab", "#accbc0", "#cdddd7", "#eeeeee", "#efd2d2", "#eeb7b6", "#ea9b9c", "#e57e82", "#dd6069", "#d43d51", "#004c6d", "#255e7e", "#3d708f", "#5383a1", "#6996b3", "#7faac6", "#94bed9", "#abd2ec", "#c1e7ff"
 ];
 
 // CodeForces Initiative
-var requestToCodeForces;
-var cf_api_url = 'https://codeforces.com/api/';
-var cf_handle;
-var cf_problems_attempt_solved = {};
-var cf_verdicts = {};
-var cf_languages = {};
-var cf_tags = {};
-var cf_attempt_level_quality = {};
-var cf_attempt_rating_quality = {};
+let requestToCodeForces;
+let cf_api_url = 'https://codeforces.com/api/';
+let cf_handle;
+let cf_problems_attempt_solved = {};
+let cf_verdicts = {};
+let cf_languages = {};
+let cf_tags = {};
+let cf_attempt_level_quality = {};
+let cf_attempt_rating_quality = {};
 
 // Uhunt Initiative
-var requestToUhunt;
-var requestToUhunt2;
-var requestToUhunt3;
-var requestToUhunt4;
-var requestToUHunt5;
+let requestToUhunt;
+let requestToUhunt2;
+let requestToUhunt3;
+let requestToUhunt4;
+let requestToUHunt5;
 
-var uva_api_url = 'https://uhunt.onlinejudge.org/api/';
-var uvaHandle;
-var uvaAllSubmissions = [];
-var uvaVerdicts = {
+let uva_api_url = 'https://uhunt.onlinejudge.org/api/';
+let uvaHandle;
+let uvaAllSubmissions = [];
+let uvaVerdicts = {
     "SubmissionError": 0,
     "CantBeJudged": 0,
     "InQueue": 0,
@@ -37,7 +37,7 @@ var uvaVerdicts = {
     "PresentationError": 0,
     "Accepted": 0
 };
-var uvaVerdictsAbove = {
+let uvaVerdictsAbove = {
     "SubmissionError": 0,
     "CantBeJudged": 0,
     "InQueue": 0,
@@ -51,7 +51,7 @@ var uvaVerdictsAbove = {
     "PresentationError": 0,
     "Accepted": 0
 };
-var uvaVerdictsBelow = {
+let uvaVerdictsBelow = {
     "SubmissionError": 0,
     "CantBeJudged": 0,
     "InQueue": 0,
@@ -65,14 +65,14 @@ var uvaVerdictsBelow = {
     "PresentationError": 0,
     "Accepted": 0
 };
-var rankingInfo = {
+let rankingInfo = {
     "rankingOfQueried": 0,
     "rankingOfAboveOfQueried": 0,
     "rankingOfBelowOfQueried": 0
 };
 
 
-var uvaLanguages = {
+let uvaLanguages = {
     "ANSI_C": 0,
     "Java": 0,
     "C++": 0,
@@ -80,25 +80,25 @@ var uvaLanguages = {
     "C++11": 0,
     "Python": 0
 };
-var uvaSubmissionRank = {};
-var maxKeySubmissionRank = 0;
-var minKeySubmissionRank = 0;
+let uvaSubmissionRank = {};
+let maxKeySubmissionRank = 0;
+let minKeySubmissionRank = 0;
 
-var regressionDataArray = [];
-var uhDIVRegression;
-var uhDivRegressionLoader;
+let regressionDataArray = [];
+let uhDIVRegression;
+let uhDivRegressionLoader;
 
 // GitHub initiative
-var requestToGH1;
-var requestToGH2;
-var requestToGH3;
+let requestToGH1;
+let requestToGH2;
+let requestToGH3;
 
-var gitHubApiURL = "https://api.github.com/users/";
-var githubUsername = "";
-var gitHubShortProfile = {};
-var languagesOfRepositories = {};
-var optimizedLanguages = {};
-var pieChartGitHub;
+let gitHubApiURL = "https://api.github.com/users/";
+let githubUsername = "";
+let gitHubShortProfile = {};
+let languagesOfRepositories = {};
+let optimizedLanguages = {};
+let pieChartGitHub;
 
 
 $(document).ready(function() {
@@ -107,10 +107,10 @@ $(document).ready(function() {
     Chart.defaults.global.defaultFontSize = 16;
     Chart.defaults.global.animation.duration = 1500;
 
-    var intLoader = $('#intLoader');
-    var cfDIV = $("#CForcesResume");
-    var gitDIV = $("#GithubResume");
-    var uhDIV = $("#UHuntResume");
+    let intLoader = $('#intLoader');
+    let cfDIV = $("#CForcesResume");
+    let gitDIV = $("#GithubResume");
+    let uhDIV = $("#UHuntResume");
     /*
      ** Initially hide 
      ** CodeForces, UVA and GitHub divisions and their preloaders
@@ -119,13 +119,13 @@ $(document).ready(function() {
     gitDIV.hide();
     uhDIV.hide();
 
-    var cfPreload = $('#CForcesPreloader');
+    let cfPreload = $('#CForcesPreloader');
     cfPreload.hide();
 
-    var uhuntPreload = $('#UhuntPreloader');
+    let uhuntPreload = $('#UhuntPreloader');
     uhuntPreload.hide();
 
-    var ghPreload = $('#GitHubPreloader');
+    let ghPreload = $('#GitHubPreloader');
     ghPreload.hide();
 
     /* Sub-Divisions Hidden */
@@ -193,7 +193,7 @@ $(document).ready(function() {
                      ** Username of : CodeForces, UVA and GitHub coming from /Home/Index
                      ** Privacy has been checked before passing from controller
                      */
-                    var WorkingProfile = response[1];
+                    let WorkingProfile = response[1];
 
                     /*
                      ** CodeForces Resume Maker starts
@@ -211,32 +211,32 @@ $(document).ready(function() {
                                 CodeForcesDataProcessor(data);
 
                                 // Set Pie Chart : VERDICT
-                                var verdictDataArray = $.map(cf_verdicts, function(v) {
+                                let verdictDataArray = $.map(cf_verdicts, function(v) {
                                     return v;
                                 });
                                 CodeForcesCreateCharts(Object.keys(cf_verdicts), verdictDataArray, 'pie', $('#verdicts_codeForces_pie'), '');
 
                                 // Set Pie Chart : Languages
-                                var languageDataArray = $.map(cf_languages, function(v) {
+                                let languageDataArray = $.map(cf_languages, function(v) {
                                     return v;
                                 });
                                 CodeForcesCreateCharts(Object.keys(cf_languages), languageDataArray, 'pie', $('#languages_codeForces_pie'), '');
 
                                 // Set Doughnut Chart : Tags
-                                var tagsDataArray = $.map(cf_tags, function(v) {
+                                let tagsDataArray = $.map(cf_tags, function(v) {
                                     return v;
                                 });
                                 CodeForcesCreateCharts(Object.keys(cf_tags), tagsDataArray, 'doughnut', $('#tags_codeForces_doughnut'), '');
 
                                 // Set Bar Chart : Levels
                                 cf_attempt_level_quality = sortObjects(cf_attempt_level_quality);
-                                var levelsDataArray = $.map(cf_attempt_level_quality, function(v) {
+                                let levelsDataArray = $.map(cf_attempt_level_quality, function(v) {
                                     return v;
                                 });
                                 CodeForcesCreateBarCharts(Object.keys(cf_attempt_level_quality), levelsDataArray, $('#levels_codeForces_bar'), 'Levels of ' + cf_handle);
 
                                 // Set Bar Chart : Tags
-                                var ratingsDataArray = $.map(cf_attempt_rating_quality, function(v) {
+                                let ratingsDataArray = $.map(cf_attempt_rating_quality, function(v) {
                                     return v;
                                 });
                                 CodeForcesCreateBarCharts(Object.keys(cf_attempt_rating_quality), ratingsDataArray, $('#problem_rating_codeForces_bar'), 'Ratings of ' + cf_handle);
@@ -485,8 +485,8 @@ function _initClearDumpGH() {
 }
 
 function _initBioCardDev(response) {
-    var _DevUsername = $('#_DeveloperName');
-    var _DevCurrentCity = "";
+    let _DevUsername = $('#_DeveloperName');
+    let _DevCurrentCity = "";
     "" !== response.currentCity ? _DevCurrentCity = response.currentCity : _DevCurrentCity = "CodeStagram";
     _DevUsername.text(toTitleCase($('#developerUsername').val()) + "(" + _DevCurrentCity + ")");
 
@@ -514,8 +514,8 @@ function toTitleCase(str) {
 
 function CodeForcesDataProcessor(data) {
 
-    for (var i = data.result.length - 1; i >= 0; i--) {
-        var submission = data.result[i];
+    for (let i = data.result.length - 1; i >= 0; i--) {
+        let submission = data.result[i];
 
         /*
          ** #problemId : Concatenates contestId (1110) and submissionID (A)
@@ -528,7 +528,7 @@ function CodeForcesDataProcessor(data) {
          ** else it will be counting till the problem is solved
          ** the goal is to count how many attempts was taken before solved
          */
-        var problemId = submission.problem.contestId + '-' + submission.problem.index;
+        let problemId = submission.problem.contestId + '-' + submission.problem.index;
 
         if (cf_problems_attempt_solved[problemId] === undefined) {
             cf_problems_attempt_solved[problemId] = {
@@ -610,7 +610,7 @@ function CodeForcesDataProcessor(data) {
 }
 
 function CodeForcesCreateCharts(keys, dataArray, chartType, context, titleText) {
-    var pieChart;
+    let pieChart;
     if (pieChart != null) {
         pieChart.destroy();
     }
@@ -644,11 +644,11 @@ function CodeForcesCreateCharts(keys, dataArray, chartType, context, titleText) 
 }
 
 function sortObjects(objects) {
-    var newObject = {};
+    let newObject = {};
 
-    var sortedArray = sortProperties(objects);
-    for (var i = 0; i < sortedArray.length; i++) {
-        var key = sortedArray[i][0];
+    let sortedArray = sortProperties(objects);
+    for (let i = 0; i < sortedArray.length; i++) {
+        let key = sortedArray[i][0];
         newObject[key] = sortedArray[i][1];
     }
     return newObject;
@@ -656,8 +656,8 @@ function sortObjects(objects) {
 
 function sortProperties(obj) {
     // convert object into array
-    var sortable = [];
-    for (var key in obj)
+    let sortable = [];
+    for (let key in obj)
         if (obj.hasOwnProperty(key))
             sortable.push([key, obj[key]]); // each item is an array in format [key, value]
 
@@ -669,7 +669,7 @@ function sortProperties(obj) {
 }
 
 function CodeForcesCreateBarCharts(keys, dataArray, context, titleText) {
-    var myChart;
+    let myChart;
     if (myChart != null) {
         myChart.destroy();
     }
@@ -715,19 +715,19 @@ function CodeForcesCreateBarCharts(keys, dataArray, context, titleText) {
 }
 
 function CodeForcesEffortSummary() {
-    var numberOfProblemsTried = 0;
-    var numberOfProblemsSolved = 0;
+    let numberOfProblemsTried = 0;
+    let numberOfProblemsSolved = 0;
 
-    var maximumAttemptsBeforeSolvingAProblem = 0;
-    var maximumProblemBeenAttempted = '';
+    let maximumAttemptsBeforeSolvingAProblem = 0;
+    let maximumProblemBeenAttempted = '';
 
-    var OneSubmissionTry = 0;
-    var problemsThatAreNotSolved = [];
+    let OneSubmissionTry = 0;
+    let problemsThatAreNotSolved = [];
 
-    var maximumNumberAProblemAccepted = 0;
-    var maximumAcceptedProblemInfo = '';
+    let maximumNumberAProblemAccepted = 0;
+    let maximumAcceptedProblemInfo = '';
 
-    for (var submissions in cf_problems_attempt_solved) {
+    for (let submissions in cf_problems_attempt_solved) {
 
         // For Each Submission : numberOfTimesTried increments to 1 
         numberOfProblemsTried += 1;
@@ -769,7 +769,7 @@ function showUserDefinedToast(message, style) {
 }
 
 function UvaSubmissionProcessor(data) {
-    for (var i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
         incrementVerdict(data[i][2]);
         incrementLanguages(data[i][5]);
         submissionRank(data[i][6]);
@@ -850,7 +850,7 @@ function submissionRank(rankNumber) {
 }
 
 function UvaAboveSubmissionProcessor(data) {
-    for (var i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
         incrementAboveVerdict(data[i][2]);
     }
 }
@@ -895,7 +895,7 @@ function incrementAboveVerdict(verdictNumber) {
 }
 
 function UvaBelowSubmissionProcessor(data) {
-    for (var i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
         incrementBelowVerdict(data[i][2]);
     }
 }
@@ -966,14 +966,14 @@ function regressionDataConstructor(ranksInfo) {
 
 function regressionDatasetTableConstructor() {
     // Regression Table Construction
-    var _aboveRow = document.getElementById("_rankAboveRow");
-    var _subjectRow = document.getElementById("_subjectRow");
-    var _belowRow = document.getElementById("_rankBelowRow");
+    let _aboveRow = document.getElementById("_rankAboveRow");
+    let _subjectRow = document.getElementById("_subjectRow");
+    let _belowRow = document.getElementById("_rankBelowRow");
     _aboveRow.innerHTML = '';
     _subjectRow.innerHTML = '';
     _belowRow.innerHTML = '';
 
-    var x = _aboveRow.insertCell(0);
+    let x = _aboveRow.insertCell(0);
     x.innerHTML = regressionDataArray[0].name;
     x = _aboveRow.insertCell(1);
     x.innerHTML = regressionDataArray[0].ranking;
@@ -988,11 +988,11 @@ function regressionDatasetTableConstructor() {
     x = _belowRow.insertCell(1);
     x.innerHTML = regressionDataArray[2].ranking;
 
-    for (var i = 0; i < regressionDataArray.length; i++) {
-        var tempVerdictArray = $.map(regressionDataArray[i].verdict, function(v) {
+    for (let i = 0; i < regressionDataArray.length; i++) {
+        let tempVerdictArray = $.map(regressionDataArray[i].verdict, function(v) {
             return v;
         });
-        for (var j = 0; j < tempVerdictArray.length; j++) {
+        for (let j = 0; j < tempVerdictArray.length; j++) {
             if (i === 0) {
                 x = _aboveRow.insertCell(j + 2);
                 x.innerHTML = tempVerdictArray[j];
@@ -1028,14 +1028,14 @@ function wordCounter() {
 function days_between(date1, date2) {
 
     // The number of milliseconds in one day
-    var ONE_DAY = 1000 * 60 * 60 * 24;
+    let ONE_DAY = 1000 * 60 * 60 * 24;
 
     // Convert both dates to milliseconds
-    var date1_ms = date1.getTime();
-    var date2_ms = date2.getTime();
+    let date1_ms = date1.getTime();
+    let date2_ms = date2.getTime();
 
     // Calculate the difference in milliseconds
-    var difference_ms = Math.abs(date1_ms - date2_ms);
+    let difference_ms = Math.abs(date1_ms - date2_ms);
 
     // Convert back to days and return
     return Math.round(difference_ms / ONE_DAY);
@@ -1043,11 +1043,11 @@ function days_between(date1, date2) {
 }
 
 function _initiateLanguages(repositories) {
-    for (var i = 0; i < repositories.length; i++) {
+    for (let i = 0; i < repositories.length; i++) {
         requestToGH3 = $.get(repositories[i].languages_url, function(languages, status) {
-            var tempKeys = Object.keys(languages);
+            let tempKeys = Object.keys(languages);
 
-            for (var k = 0; k < tempKeys.length; k++) {
+            for (let k = 0; k < tempKeys.length; k++) {
                 if (languagesOfRepositories[tempKeys[k]] === undefined) {
                     languagesOfRepositories[tempKeys[k]] = languages[tempKeys[k]];
                 } else {
@@ -1066,7 +1066,7 @@ function _initiateLanguages(repositories) {
 }
 
 function _demonstrateLanguagesGitHub(gitHubLanguageChart, chartType, titleText) {
-    var tempLang = {};
+    let tempLang = {};
     tempLang = sortObjectsByAsc(languagesOfRepositories);
 
     pieChartGitHub = new Chart(gitHubLanguageChart, {
@@ -1097,11 +1097,11 @@ function _demonstrateLanguagesGitHub(gitHubLanguageChart, chartType, titleText) 
 }
 
 function sortObjectsByAsc(objects) {
-    var newObject = {};
+    let newObject = {};
 
-    var sortedArray = sortPropertiesByAsc(objects);
-    for (var i = 0; i < sortedArray.length; i++) {
-        var key = sortedArray[i][0];
+    let sortedArray = sortPropertiesByAsc(objects);
+    for (let i = 0; i < sortedArray.length; i++) {
+        let key = sortedArray[i][0];
         newObject[key] = sortedArray[i][1];
     }
     return newObject;
@@ -1109,8 +1109,8 @@ function sortObjectsByAsc(objects) {
 
 function sortPropertiesByAsc(obj) {
     // convert object into array
-    var sortable = [];
-    for (var key in obj)
+    let sortable = [];
+    for (let key in obj)
         if (obj.hasOwnProperty(key))
             sortable.push([key, obj[key]]); // each item is an array in format [key, value]
 

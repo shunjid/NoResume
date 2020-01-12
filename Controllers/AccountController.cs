@@ -45,18 +45,26 @@ namespace NoResume.Controllers
          * this will get generated
          */
         [HttpPost]
-        public async Task<IActionResult> Register(InitDevelopers initDevelopers, String returnUrl)
+        public async Task<IActionResult> Register(InitDevelopers initDevelopers, string returnUrl)
         {
             if (ModelState.IsValid)
             {
-                MailAddress mailAddress = new MailAddress(initDevelopers.DevEmail);
+                var mailAddress = new MailAddress(initDevelopers.DevEmail);
                 initDevelopers.DevId = Guid.NewGuid().ToString().Replace("-", "");
-                var userObject = new IdentityUser{ Id = initDevelopers.DevId, UserName = mailAddress.User, Email = initDevelopers.DevEmail};
+                
+                var userObject = new IdentityUser
+                {
+                    Id = initDevelopers.DevId,
+                    UserName = mailAddress.User,
+                    Email = initDevelopers.DevEmail,
+                    LockoutEnabled = false
+                };
                 var userCreationResult = await _userManager.CreateAsync(userObject, initDevelopers.DevPassword);
 
                 if (userCreationResult.Succeeded)
                 {
-                    await _signInManager.SignInAsync(userObject, isPersistent:false);
+                    await _signInManager.SignInAsync(userObject, true);
+                    
                     var shortBio = new ShortBio
                     {
                         DeveloperId = initDevelopers.DevId,
@@ -99,12 +107,18 @@ namespace NoResume.Controllers
         {
             if (ModelState.IsValid)
             {
-                MailAddress address = new MailAddress(model.DevEmail);
-                var user = new IdentityUser{ UserName = address.User, Email = model.DevEmail };
+                var address = new MailAddress(model.DevEmail);
+                
+                var user = new IdentityUser
+                {
+                    UserName = address.User,
+                    Email = model.DevEmail
+                };
                 await _signInManager.SignOutAsync();
 
                 var result = await 
-                    _signInManager.PasswordSignInAsync(user.UserName, model.DevPassword, isPersistent: true, lockoutOnFailure:false);
+                    _signInManager.PasswordSignInAsync(user.UserName, model.DevPassword, true, false);
+                
                 if (result.Succeeded)
                 {
                     if (!string.IsNullOrEmpty(returnUrl))
