@@ -18,7 +18,7 @@
    <img src="https://img.shields.io/github/release/shunjid/NoResume" alt="release">
   </a>	
 	
-<a href="https://actions-badge.atrox.dev/shunjid/NoResume/goto"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fshunjid%2FNoResume%2Fbadge%3Fref%3Dmaster&style=flat" /></a>
+  <a href="https://actions-badge.atrox.dev/shunjid/NoResume/goto"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fshunjid%2FNoResume%2Fbadge%3Fref%3Dmaster&style=flat" /></a>
   </a>
 
 </p>
@@ -102,12 +102,12 @@ Though this is going to be a general purpose service and so any one can use it b
    * jQuery 3.4.1
    * ChartJS
    * Froala text editor
-* Object Relational Mapping: Entity Framework Core 2.2.0
+* Object Relational Mapping: Entity Framework Core 3.1.0
 * External NuGet Packages
    * Microsoft.AspNetCore.Identity.EntityFrameworkCore --version 2.2.0
    * Microsoft.AspNetCore.Identity --version 2.2.0
-   * Microsoft.EntityFrameworkCore.Design --version 2.2.6
-   * Microsoft.EntityFrameworkCore.Sqlite --version 2.2.6
-   * Microsoft.EntityFrameworkCore.SqlServer --version 2.2.6
-   * Microsoft.VisualStudio.Web.CodeGeneration.Design --version 2.2.3
+   * Microsoft.EntityFrameworkCore.Design --version 3.1.0
+   * Microsoft.EntityFrameworkCore.Sqlite --version 3.1.0
+   * Microsoft.EntityFrameworkCore.SqlServer --version 3.1.0
+   * Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.1.0
    * Microsoft.AspNetCore.StaticFiles --version 2.2.0
